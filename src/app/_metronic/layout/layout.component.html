@@ -46,12 +46,6 @@
         <app-footer class="footer py-4 d-flex flex-lg-column" [ngClass]="footerCSSClasses" id="kt_footer"></app-footer>
       </div>
       <!--end::Wrapper-->
-      <ng-container *ngIf="showSidebar$ | async">
-        <app-sidebar class="sidebar p-5 px-lg-0 py-lg-11" data-kt-drawer="true" data-kt-drawer-name="sidebar"
-          data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
-          data-kt-drawer-width="275px" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_sidebar_toggle">
-        </app-sidebar>
-      </ng-container>
     </div>
     <!--end::Container-->
   </div>
@@ -61,18 +55,3 @@
 
 <app-scripts-init></app-scripts-init>
 <app-scroll-top></app-scroll-top>
-
-<!-- begin:: Drawers -->
-<app-activity-drawer></app-activity-drawer>
-<app-messenger-drawer></app-messenger-drawer>
-<!-- end:: Drawers -->
-
-<!-- end:: Engage -->
-<app-engages></app-engages>
-<!-- end:: Engage -->
-
-<!-- begin:: Modals -->
-<app-main-modal></app-main-modal>
-<app-invite-users-modal></app-invite-users-modal>
-<app-upgrade-plan-modal></app-upgrade-plan-modal>
-<!-- end:: Modals -->

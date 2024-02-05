@@ -12,6 +12,7 @@ export class SidebarService {
 
   constructor(private layout: LayoutService) {
     const state = this.layout.getProp("sidebar.display") as boolean;
+    console.log("this.layout",this.layout.getProp("sidebar.display"), state)
     this.initShowSidebar.next(state);
     this.sidebarState.next(state);
   }

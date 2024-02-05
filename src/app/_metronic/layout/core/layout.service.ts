@@ -149,6 +149,7 @@ export class LayoutService {
     if (!layoutConfig) {
       return;
     }
+    console.log(layoutConfig, path)
 
     return objectPath.get(layoutConfig, path);
   }
