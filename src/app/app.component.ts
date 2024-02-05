@@ -9,5 +9,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'fo';
+  title = 'm1p10mean-dera-lafatra-front';
 }
