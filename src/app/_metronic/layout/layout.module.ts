@@ -28,7 +28,7 @@ import {
   DrawersModule,
   DropdownMenusModule,
   ModalsModule,
-  EngagesModule,
+  EngagesModule, WidgetsModule,
 } from "../partials";
 import { EngagesComponent } from "../partials/layout/engages/engages.component";
 import { AuthorsTabComponent } from "./components/aside/tabs/authors-tab/authors-tab.component";
@@ -91,6 +91,7 @@ const routes: Routes = [
     TranslateModule,
     FormsModule,
     ThemeModeModule,
+      WidgetsModule,
   ],
   exports: [RouterModule],
 })
