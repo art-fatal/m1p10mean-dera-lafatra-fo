@@ -10,8 +10,7 @@ import {
 import { TranslateModule } from "@ngx-translate/core";
 import { TranslationModule } from "../../modules/i18n";
 import { LayoutComponent } from "./layout.component";
-import { ExtrasModule } from "../partials/layout/extras/extras.module";
-import { Routing } from "../../pages/routing";
+import { ExtrasModule } from "../partials";
 import { AsideComponent } from "./components/aside/aside.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { ContentComponent } from "./components/content/content.component";
@@ -46,7 +45,27 @@ const routes: Routes = [
   {
     path: "",
     component: LayoutComponent,
-    children: Routing,
+    children: [
+      {
+        path: 'staff',
+        loadChildren: () =>
+            import('../../modules/staff/staff.module').then((m) => m.StaffModule),
+      },
+      {
+        path: 'manager',
+        loadChildren: () =>
+            import('../../modules/manager/manager.module').then((m) => m.ManagerModule),
+      },
+      {
+        path: '',
+        loadChildren: () =>
+            import('../../modules/customer/customer.module').then((m) => m.CustomerModule),
+      },
+      {
+        path: "**",
+        redirectTo: "error/404",
+      },
+    ],
   },
 ];
 
