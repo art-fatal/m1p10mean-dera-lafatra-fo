@@ -10,8 +10,10 @@ export class LayoutInitService {
 
   init() {
     this.layout.initConfig();
+    this.initBaseLayout()
+  }
 
-    // init base layout
+  initBaseLayout(){
     this.initLayout();
     this.initHeader();
     this.initPageTitle();
@@ -23,13 +25,7 @@ export class LayoutInitService {
 
   update(fieldsToUpdate: Partial<ILayout>) {
     this.layout.updateConfig(fieldsToUpdate);
-    this.initLayout();
-    this.initHeader();
-    this.initPageTitle();
-    this.initToolbar();
-    this.initContent();
-    this.initAside();
-    this.initFooter();
+    this.initBaseLayout()
   }
 
   private initLayout() {
@@ -48,6 +44,8 @@ export class LayoutInitService {
     const fixedDesktop = this.layout.getProp("header.fixed.desktop") as boolean;
     if (fixedDesktop) {
       document.body.classList.add("header-fixed");
+    }else{
+      document.body.classList.remove("header-fixed");
     }
 
     const tabletAndMobile = this.layout.getProp(
@@ -55,6 +53,8 @@ export class LayoutInitService {
     ) as boolean;
     if (tabletAndMobile) {
       document.body.classList.add("header-tablet-and-mobile-fixed");
+    }else{
+      document.body.classList.remove("header-tablet-and-mobile-fixed");
     }
   }
 
@@ -74,6 +74,8 @@ export class LayoutInitService {
     const display = this.layout.getProp("aside.display") as boolean;
     if (display) {
       document.body.classList.add("aside-enabled");
+    }else{
+      document.body.classList.remove("aside-enabled");
     }
   }
 

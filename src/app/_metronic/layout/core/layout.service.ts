@@ -149,12 +149,19 @@ export class LayoutService {
     if (!layoutConfig) {
       return;
     }
-    console.log(layoutConfig, path)
 
     return objectPath.get(layoutConfig, path);
   }
 
   setCSSClass(path: string, classesInStr: string) {
+    const cssClasses: string[] =  [];
+    classesInStr
+      .split(' ')
+      .forEach((cssClass: string) => cssClasses.push(cssClass));
+
+    this.classes[path] = cssClasses;
+  }
+  addCSSClass(path: string, classesInStr: string) {
     const cssClasses = this.classes[path];
     if (!cssClasses) {
       this.classes[path] = [];

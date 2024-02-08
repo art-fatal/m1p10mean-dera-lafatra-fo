@@ -3,12 +3,12 @@ import {
   OnInit,
   ViewChild,
   ElementRef,
-  AfterViewInit,
+  AfterViewInit, OnDestroy,
 } from "@angular/core";
 import { LayoutService } from "./core/layout.service";
 import { LayoutInitService } from "./core/layout-init.service";
 import { SidebarService } from "./core/sidebar.service";
-import { Observable } from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import { PageInfoService } from "./core/page-info.service";
 
 @Component({
@@ -16,7 +16,7 @@ import { PageInfoService } from "./core/page-info.service";
   templateUrl: "./layout.component.html",
   styleUrls: ["./layout.component.scss"],
 })
-export class LayoutComponent implements OnInit, AfterViewInit {
+export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   // Public variables
   selfLayout = "default";
   asideSelfDisplay: true;
@@ -45,6 +45,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
   extrasScrollTopDisplay = false;
   asideDisplay: boolean;
   title$: Observable<string>;
+  private unsubscribe: Subscription[] = [];
 
   @ViewChild("ktAside", { static: true }) ktAside: ElementRef;
   @ViewChild("ktHeaderMobile", { static: true }) ktHeaderMobile: ElementRef;
@@ -58,22 +59,20 @@ export class LayoutComponent implements OnInit, AfterViewInit {
   ) {
     this.initService.init();
     this.showSidebar$ = this.sidebar.sidebarState.asObservable();
+    const layoutSubscriber = this.layout.layoutConfigSubject.asObservable().subscribe(() => {
+      this.buildView()
+    })
+    this.unsubscribe.push(layoutSubscriber)
   }
 
   ngOnInit(): void {
     // build view by layout config settings
-    this.asideDisplay = this.layout.getProp("aside.display") as boolean;
-    this.toolbarDisplay = this.layout.getProp("toolbar.display") as boolean;
-    this.headerFixedDesktop = this.layout.getProp("header.fixed.desktop") as
-      | boolean
-      | undefined;
-    this.contentContainerClasses =
-      this.layout.getStringCSSClasses("contentContainer");
-    this.asideCSSClasses = this.layout.getStringCSSClasses("aside");
-    this.headerCSSClasses = this.layout.getStringCSSClasses("header");
-    this.headerHTMLAttributes = this.layout.getHTMLAttributes("headerMenu");
-    this.footerCSSClasses = this.layout.getStringCSSClasses("footer");
+    this.buildView()
     this.title$ = this.pageInfo.title.asObservable();
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe.forEach((sb) => sb.unsubscribe());
   }
 
   ngAfterViewInit(): void {
@@ -85,5 +84,21 @@ export class LayoutComponent implements OnInit, AfterViewInit {
         }
       }
     }
+  }
+
+  private buildView() {
+    this.initService.initBaseLayout();
+    this.asideDisplay = this.layout.getProp("aside.display") as boolean;
+    this.toolbarDisplay = this.layout.getProp("toolbar.display") as boolean;
+    this.headerFixedDesktop = this.layout.getProp("header.fixed.desktop") as
+        | boolean
+        | undefined;
+    this.contentContainerClasses =
+        this.layout.getStringCSSClasses("contentContainer");
+    this.asideCSSClasses = this.layout.getStringCSSClasses("aside");
+    this.headerCSSClasses = this.layout.getStringCSSClasses("header");
+    this.headerHTMLAttributes = this.layout.getHTMLAttributes("headerMenu");
+    this.footerCSSClasses = this.layout.getStringCSSClasses("footer");
+    console.log(this.headerCSSClasses)
   }
 }

@@ -23,17 +23,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(private layout: LayoutService, private router: Router) {
     this.routingChanges();
-    const headerMenu = this.layout.getProp("header.menu") as
-      | boolean
-      | undefined;
-    if (headerMenu) {
-      this.showHeaderMenu = true;
-    }
+
+    const layoutSubscriber = this.layout.layoutConfigSubject.asObservable().subscribe(() => {
+      this.buildView()
+    })
+
+    this.unsubscribe.push(layoutSubscriber)
   }
 
   ngOnInit(): void {
-    this.headerContainerCssClasses =
-      this.layout.getStringCSSClasses("headerContainer");
+    this.buildView()
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe.forEach((sb) => sb.unsubscribe());
   }
 
   routingChanges() {
@@ -45,5 +48,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.unsubscribe.push(routerSubscription);
   }
 
-  ngOnDestroy() {}
+  private buildView() {
+    this.headerContainerCssClasses = this.layout.getStringCSSClasses("headerContainer");
+    const headerMenu = this.layout.getProp("header.menu") as
+        | boolean
+        | undefined;
+    if (headerMenu) {
+      this.showHeaderMenu = true;
+    }
+  }
 }

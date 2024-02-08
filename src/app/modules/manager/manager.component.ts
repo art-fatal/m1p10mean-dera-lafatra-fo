@@ -21,11 +21,16 @@ export class ManagerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.updateLayoutConfig()
+    this.pageInfo.updateBreadcrumbs([]);
+  }
+
+  updateLayoutConfig(){
     this.model = this.layout.getConfig();
     this.model.content.width = 'fluid';
     this.model.header.width = 'fluid';
-    this.layout.updateConfig(this.model);
-    this.pageInfo.updateBreadcrumbs([]);
+    this.model.aside.display = true;
+    this.layout.setConfig(this.model);
   }
 
   setActiveTab(tab: Tabs) {
