@@ -6,17 +6,18 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { InlineSVGModule } from 'ng-inline-svg-2';
 import { AppointmentHistoryComponent } from './appointment-history/appointment-history.component';
 import {CustomerRoutingModule} from "./customer-routing.module";
-import {WidgetsModule} from "../../_metronic/partials";
+import {DropdownMenusModule, WidgetsModule} from "../../_metronic/partials";
 
 @NgModule({
   declarations: [CustomerComponent, AppointmentHistoryComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    InlineSVGModule,
-    NgbTooltipModule,
-    CustomerRoutingModule,
-    WidgetsModule,
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        InlineSVGModule,
+        NgbTooltipModule,
+        CustomerRoutingModule,
+        WidgetsModule,
+        DropdownMenusModule,
+    ],
 })
 export class CustomerModule {}
