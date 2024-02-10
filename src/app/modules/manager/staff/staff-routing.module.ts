@@ -4,6 +4,7 @@ import {StaffComponent} from "./staff.component";
 import {ListComponent} from "./list/list.component";
 import {WidgetsModule} from "../../../_metronic/partials";
 import {FormComponent} from "./form/form.component";
+import {InlineSVGModule} from "ng-inline-svg-2";
 
 const routes: Routes = [
     {
@@ -27,6 +28,7 @@ const routes: Routes = [
     imports: [
         RouterModule.forChild(routes),
         WidgetsModule,
+        InlineSVGModule,
     ],
     exports: [RouterModule],
 })
