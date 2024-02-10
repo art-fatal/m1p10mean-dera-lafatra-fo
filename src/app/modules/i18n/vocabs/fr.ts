@@ -5,6 +5,12 @@ export const locale = {
     TRANSLATOR: {
       SELECT: 'choisissez votre langue',
     },
+    APP:{
+      EMAIL: 'Email',
+      PASSWORD: 'Mot de passe',
+      PLS_WAIT: 'Veuillez patienter',
+      CONTINUE: 'Continue',
+    },
     MENU: {
       NEW: 'Nouveau',
       ACTIONS: 'Actes',
@@ -25,6 +31,10 @@ export const locale = {
         PRIVACY: 'Privacy',
         LEGAL: 'Legal',
         CONTACT: 'Contact',
+        NEW_HERE: 'Nouveau',
+        SIGNIN_TO: 'Se connecter à',
+        LOGIN_CREDENTIALS_INVALID: 'Les informations de connexion sont incorrectes',
+        FORGOT_PASSWORD: 'Mot de passe oublié',
       },
       LOGIN: {
         TITLE: 'Créer un compte',
