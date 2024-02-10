@@ -10,6 +10,8 @@ export const locale = {
       PASSWORD: 'Password',
       PLS_WAIT: 'Please wait',
       CONTINUE: 'Continue',
+      SIGNIN: 'Sign in',
+      SIGNUP: 'Sign Up',
     },
     MENU: {
       NEW: 'new',
@@ -34,7 +36,10 @@ export const locale = {
         NEW_HERE: 'New Here',
         SIGNIN_TO: 'Sign In to',
         LOGIN_CREDENTIALS_INVALID: 'The login details are incorrect',
+        REGISTRATION_CREDENTIALS_INVALID: 'The registration details are incorrect',
         FORGOT_PASSWORD: 'Forgot password',
+        CREATE_ACCOUNT: 'Create an account',
+        ALREADY_HAVE_ACCOUNT: 'Already have an account',
       },
       LOGIN: {
         TITLE: 'Login Account',
