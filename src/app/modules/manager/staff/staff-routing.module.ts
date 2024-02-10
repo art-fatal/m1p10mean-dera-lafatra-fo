@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {StaffComponent} from "./staff.component";
 import {ListComponent} from "./list/list.component";
 import {WidgetsModule} from "../../../_metronic/partials";
+import {FormComponent} from "./form/form.component";
 
 const routes: Routes = [
     {
@@ -12,6 +13,10 @@ const routes: Routes = [
             {
                 path: 'list',
                 component: ListComponent,
+            },
+            {
+                path: 'add',
+                component: FormComponent,
             },
         ],
     },

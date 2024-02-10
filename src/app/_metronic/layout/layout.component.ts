@@ -55,7 +55,7 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     private initService: LayoutInitService,
     private layout: LayoutService,
     private sidebar: SidebarService,
-    private pageInfo: PageInfoService
+    private pageInfo: PageInfoService,
   ) {
     this.initService.init();
     this.showSidebar$ = this.sidebar.sidebarState.asObservable();
