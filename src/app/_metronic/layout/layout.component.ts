@@ -99,6 +99,5 @@ export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.headerCSSClasses = this.layout.getStringCSSClasses("header");
     this.headerHTMLAttributes = this.layout.getHTMLAttributes("headerMenu");
     this.footerCSSClasses = this.layout.getStringCSSClasses("footer");
-    console.log(this.headerCSSClasses)
   }
 }
