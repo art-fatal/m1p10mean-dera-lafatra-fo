@@ -7,9 +7,11 @@ import {ServiceComponent} from "./service.component";
 import {ServiceRoutingModule} from "./service-routing.module";
 import {ListComponent} from "./list/list.component";
 import {WidgetsModule} from "../../../_metronic/partials";
+import { CreateButtonComponent } from './list/create-button/create-button.component';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
-    declarations: [ServiceComponent, ListComponent],
+    declarations: [ServiceComponent, ListComponent, CreateButtonComponent, FormComponent],
     imports: [
         CommonModule,
         FormsModule,
