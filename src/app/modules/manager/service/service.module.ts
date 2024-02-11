@@ -10,6 +10,7 @@ import {WidgetsModule} from "../../../_metronic/partials";
 import { CreateButtonComponent } from './component/list/create-button/create-button.component';
 import { FormComponent } from './component/form/form.component';
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
+import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 
 @NgModule({
     declarations: [ServiceComponent, ListComponent, CreateButtonComponent, FormComponent],
@@ -20,6 +21,7 @@ import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
         NgbTooltipModule,
         ServiceRoutingModule,
         WidgetsModule,
+        NgxDatatableModule,
         SweetAlert2Module
     ],
 })

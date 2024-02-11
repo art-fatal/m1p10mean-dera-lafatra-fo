@@ -13,6 +13,7 @@ import { AuthService } from './modules/auth';
 import { environment } from 'src/environments/environment';
 // #fake-start#
 import { FakeAPIService } from './_fake';
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -42,6 +43,7 @@ function appInitializer(authService: AuthService) {
     // #fake-end#
     AppRoutingModule,
     InlineSVGModule.forRoot(),
+    SweetAlert2Module.forRoot(),
     NgbModule,
   ],
   providers: [

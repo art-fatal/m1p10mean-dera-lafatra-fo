@@ -1,7 +1,26 @@
 <div class="card mb-5 mb-xl-8">
     <!-- begin::Body -->
     <div class="card-body py-3">
+        <button (click)="changeMessage()">azerty</button>
+        <span>{{message}}</span>
         <!-- begin::Table container -->
+        <div>
+            <ngx-datatable
+                    class="material"
+                    [rows]="rows"
+                    [columns]="[{ name: 'Name' }]"
+                    [columnMode]="columnMode.force"
+                    [headerHeight]="50"
+                    [footerHeight]="50"
+                    rowHeight="auto"
+                    [externalPaging]="true"
+                    [count]="page.totalElements"
+                    [offset]="page.pageNumber"
+                    [limit]="page.size"
+                    (page)="setPage($event)"
+            >
+            </ngx-datatable>
+        </div>
         <div class="table-responsive">
             <!-- begin::Table -->
             <table
