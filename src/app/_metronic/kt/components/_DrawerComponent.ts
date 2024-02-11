@@ -141,6 +141,7 @@ class DrawerComponent {
     const attr = this.element.getAttribute(`data-kt-drawer-${name}`)
     if (attr) {
       let value = getAttributeValueByBreakpoint(attr)
+
       if (value !== null && String(value) === 'true') {
         return true
       } else {

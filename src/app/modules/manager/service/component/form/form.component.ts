@@ -2,7 +2,7 @@ import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, Subscription} from "rxjs";
 
 @Component({
-  selector: 'app-manager-staff-form',
+  selector: 'app-manager-service-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })

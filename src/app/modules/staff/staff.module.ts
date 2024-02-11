@@ -4,7 +4,7 @@ import {StaffComponent} from './staff.component';
 import {FormsModule} from '@angular/forms';
 import {NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {InlineSVGModule} from 'ng-inline-svg-2';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {DashboardComponent} from './component/dashboard/dashboard.component';
 import {StaffRoutingModule} from "./staff-routing.module";
 
 @NgModule({

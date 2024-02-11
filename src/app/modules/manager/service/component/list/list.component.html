@@ -1,0 +1,107 @@
+<div class="card mb-5 mb-xl-8">
+    <!-- begin::Body -->
+    <div class="card-body py-3">
+        <!-- begin::Table container -->
+        <div class="table-responsive">
+            <!-- begin::Table -->
+            <table
+                    class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4"
+            >
+                <!-- begin::Table head -->
+                <thead>
+                <tr class="fw-bolder text-muted">
+                    <th class="min-w-50px">Id</th>
+                    <th class="min-w-150px">Name</th>
+                    <th class="min-w-50px">Duration</th>
+                    <th class="min-w-50px">Commission</th>
+                    <th class="min-w-100px text-end">Actions</th>
+                </tr>
+                </thead>
+                <!-- end::Table head -->
+                <!-- begin::Table body -->
+                <tbody>
+                <tr>
+                    <td>
+                        <span>1</span>
+                    </td>
+                    <td>
+                        <span class="text-muted fw-bold text-muted d-block fs-7">
+                          HTML, JS, ReactJS
+                        </span>
+                    </td>
+                    <td>
+                        <span class="text-muted fw-bold text-muted d-block fs-7">3h</span>
+                    </td>
+                    <td>
+                        <span class="text-muted me-2 fs-7 fw-bold">50%</span>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-end flex-shrink-0">
+                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 kt_service_form_toggle">
+                                <span [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'"
+                                      class="svg-icon svg-icon-3">
+
+                                </span>
+                            </a>
+                            <button (click)="fireDelete(1)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                <span [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
+                                      class="svg-icon svg-icon-3">
+
+                                </span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>2</span>
+                    </td>
+                    <td>
+                        <span class="text-muted fw-bold text-muted d-block fs-7">
+                          HTML, JS, ReactJS
+                        </span>
+                    </td>
+                    <td>
+                        <span class="text-muted fw-bold text-muted d-block fs-7">3h</span>
+                    </td>
+                    <td>
+                        <span class="text-muted me-2 fs-7 fw-bold">50%</span>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-end flex-shrink-0">
+                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                <span [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'"
+                                      class="svg-icon svg-icon-3">
+
+                                </span>
+                            </a>
+                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                <span [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
+                                      class="svg-icon svg-icon-3">
+
+                                </span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+                <!-- end::Table body -->
+            </table>
+            <!-- end::Table -->
+        </div>
+        <!-- end::Table container -->
+    </div>
+    <!-- begin::Body -->
+
+</div>
+
+
+
+<swal #deleteSwal [swalOptions]="swalOptions" title="Are you sure to delete?" text="This cannot be undone" icon="warning" [showCancelButton]="true"
+      [focusCancel]="true"
+      [customClass]="{confirmButton: 'btn btn-danger', cancelButton: 'btn btn-active-light'}">
+</swal>
+
+<swal #successSwal [swalOptions]="swalOptions" title="Delete successfully!" text="" icon="success"
+      [customClass]="{confirmButton: 'btn btn-success'}">
+</swal>
