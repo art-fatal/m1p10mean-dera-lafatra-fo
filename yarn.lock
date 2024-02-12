@@ -214,6 +214,15 @@
   dependencies:
     tslib "^2.3.0"
 
+"@angular/cdk@^16.0.2":
+  version "16.2.14"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-16.2.14.tgz#d26f8f1e7d2466b509e60489b6acf31bfe923acf"
+  integrity sha512-n6PrGdiVeSTEmM/HEiwIyg6YQUUymZrb5afaNLGFRM5YL0Y8OBqd+XhCjb0OfD/AfgCUtedVEPwNqrfW8KzgGw==
+  dependencies:
+    tslib "^2.3.0"
+  optionalDependencies:
+    parse5 "^7.1.2"
+
 "@angular/cli@~16.0.2":
   version "16.0.6"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-16.0.6.tgz#87683054671c35ef0891e7331e55bb46f7136c24"
@@ -6528,6 +6537,13 @@ make-fetch-happen@^11.0.0, make-fetch-happen@^11.0.1, make-fetch-happen@^11.1.1:
     socks-proxy-agent "^7.0.0"
     ssri "^10.0.0"
 
+material-dynamic-table@^16.5.0:
+  version "16.5.0"
+  resolved "https://registry.yarnpkg.com/material-dynamic-table/-/material-dynamic-table-16.5.0.tgz#f4471cd219ac9664c317baa581769b63492933cf"
+  integrity sha512-cli3dh01Wlgsdyyxwfke0//xeFm80hXmGjpR5Keh3Vs5FQR4w3RtebECTQZoRTkEz5PwA7FTleaOIsRIonZ2Xw==
+  dependencies:
+    tslib "^2.3.0"
+
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
@@ -7296,7 +7312,7 @@ parse5@6.0.1:
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-6.0.1.tgz#e1a1c085c569b3dc08321184f19a39cc27f7c30b"
   integrity sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==
 
-parse5@^7.0.0:
+parse5@^7.0.0, parse5@^7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-7.1.2.tgz#0736bebbfd77793823240a23b7fc5e010b7f8e32"
   integrity sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==

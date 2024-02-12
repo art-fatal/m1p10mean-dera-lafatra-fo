@@ -11,6 +11,7 @@ import { CreateButtonComponent } from './component/list/create-button/create-but
 import { FormComponent } from './component/form/form.component';
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
+import {DynamicTableModule} from "material-dynamic-table";
 
 @NgModule({
     declarations: [ServiceComponent, ListComponent, CreateButtonComponent, FormComponent],
@@ -22,7 +23,8 @@ import {NgxDatatableModule} from "@swimlane/ngx-datatable";
         ServiceRoutingModule,
         WidgetsModule,
         NgxDatatableModule,
-        SweetAlert2Module
+        SweetAlert2Module,
+        DynamicTableModule
     ],
 })
 export class ServiceModule {
