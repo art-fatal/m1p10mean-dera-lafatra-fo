@@ -265,9 +265,7 @@
     <button
       type="submit"
       id="kt_sign_up_submit"
-      [disabled]="
-        registrationForm.invalid || !registrationForm.controls['agree'].value
-      "
+      [disabled]="registrationForm.invalid"
       class="btn btn-lg btn-primary w-100 mb-5"
     >
       <ng-container *ngIf="(isLoading$ | async) === false">
