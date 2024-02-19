@@ -1,22 +1,18 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ToolbarActionService} from "../../../../../_metronic/layout/core/toolbar-action.service";
 import {CreateButtonComponent} from "./create-button/create-button.component";
-import {MockServerResultService} from "../../../../datatable/services/mock-server/mock-server-result.service";
-import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {Subscription} from "rxjs";
+import {MatTableDataSource} from "@angular/material/table";
 import {StaffService} from "src/app/services/staff-service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-list',
-  providers: [MockServerResultService],
   templateUrl: './list.component.html',
-  styleUrls: [
-      './list.component.scss',
-  ]
+  styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit, OnDestroy, AfterViewInit{
+export class ListComponent implements OnInit, AfterViewInit, OnDestroy{
   displayedColumns: string[] = ['createdAt', 'name', 'price', 'duration', 'commission', 'actions']; // Exemple de colonnes
   dataSource = new MatTableDataSource();
 

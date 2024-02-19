@@ -56,6 +56,50 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns" class="fw-bolder text-muted"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
+
+            <!--            <div class="d-flex flex-stack flex-wrap pt-10">-->
+            <!--                <div class="fs-6 fw-bold text-gray-700">Showing 1 to 10 of 50 entries</div>-->
+
+            <!--                <ul class="pagination">-->
+            <!--                    <li class="page-item previous">-->
+            <!--                        <a class="page-link cursor-pointer">-->
+            <!--                            <i class="previous"></i>-->
+            <!--                        </a>-->
+            <!--                    </li>-->
+
+            <!--                    <li class="page-item active">-->
+            <!--                        <a class="page-link cursor-pointer"> 1 </a>-->
+            <!--                    </li>-->
+
+            <!--                    <li class="page-item">-->
+            <!--                        <a class="page-link cursor-pointer"> 2 </a>-->
+            <!--                    </li>-->
+
+            <!--                    <li class="page-item">-->
+            <!--                        <a class="page-link cursor-pointer"> 3 </a>-->
+            <!--                    </li>-->
+
+            <!--                    <li class="page-item">-->
+            <!--                        <a class="page-link cursor-pointer"> 4 </a>-->
+            <!--                    </li>-->
+
+            <!--                    <li class="page-item">-->
+            <!--                        <a class="page-link cursor-pointer"> 5 </a>-->
+            <!--                    </li>-->
+
+            <!--                    <li class="page-item">-->
+            <!--                        <a class="page-link cursor-pointer"> 6 </a>-->
+            <!--                    </li>-->
+
+            <!--                    <li class="page-item next">-->
+            <!--                        <a class="page-link cursor-pointer">-->
+            <!--                            <i class="next"></i>-->
+            <!--                        </a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+
+
             <mat-paginator [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"></mat-paginator>
         </div>
     </div>

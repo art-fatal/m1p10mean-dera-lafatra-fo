@@ -5,7 +5,7 @@ import { UserModel } from '../../models/user.model';
 import { environment } from '../../../../../environments/environment';
 import { AuthModel } from '../../models/auth.model';
 
-const API_USERS_URL = `${environment.apiUrl}/auth`;
+const API_USERS_URL = `${environment.apiUrl}`;
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,7 @@ export class AuthHTTPService {
 
   // public methods
   login(email: string, password: string): Observable<any> {
-    return this.http.post<AuthModel>(`${API_USERS_URL}/login`, {
+    return this.http.post<AuthModel>(`${API_USERS_URL}/tokens`, {
       email,
       password,
     });
@@ -23,7 +23,7 @@ export class AuthHTTPService {
 
   // CREATE =>  POST: add a new user to the server
   createUser(user: UserModel): Observable<UserModel> {
-    return this.http.post<UserModel>(API_USERS_URL, user);
+    return this.http.post<UserModel>(`${API_USERS_URL}/users`, user);
   }
 
   // Your server should check email => If email exists send link to the user and return true | If email doesn't exist return false

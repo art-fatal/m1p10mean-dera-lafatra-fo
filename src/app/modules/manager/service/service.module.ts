@@ -12,6 +12,9 @@ import { FormComponent } from './component/form/form.component';
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import {NgxDatatableModule} from "@swimlane/ngx-datatable";
 import {DynamicTableModule} from "material-dynamic-table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatSortModule} from "@angular/material/sort";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
     declarations: [ServiceComponent, ListComponent, CreateButtonComponent, FormComponent],
@@ -24,7 +27,10 @@ import {DynamicTableModule} from "material-dynamic-table";
         WidgetsModule,
         NgxDatatableModule,
         SweetAlert2Module,
-        DynamicTableModule
+        DynamicTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatTableModule
     ],
 })
 export class ServiceModule {
