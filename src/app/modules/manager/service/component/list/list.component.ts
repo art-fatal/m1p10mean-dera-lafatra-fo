@@ -6,7 +6,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {Subscription} from "rxjs";
-import {StaffService} from "src/app/services/staff-service";
+import {ServiceService} from "src/app/services/service-service";
 
 @Component({
   selector: 'app-list',
@@ -25,7 +25,7 @@ export class ListComponent implements OnInit, OnDestroy, AfterViewInit{
 
   private unsubscribe: Subscription[] = [];
 
-  constructor(private toolbarAction: ToolbarActionService,private staffService: StaffService) {}
+  constructor(private toolbarAction: ToolbarActionService,private service: ServiceService) {}
 
   ngOnInit() {
     this.toolbarAction.changeComponent(CreateButtonComponent);
@@ -37,10 +37,10 @@ export class ListComponent implements OnInit, OnDestroy, AfterViewInit{
 
     this.loadData();
 
-    const staffCollectionSubscr = this.staffService.collection$.subscribe(data => {
+    const staffCollectionSubscr = this.service.collection$.subscribe(data => {
       this.dataSource.data = data;
       if (this.paginator) {
-        this.paginator.length = this.staffService.collectionLength;
+        this.paginator.length = this.service.collectionLength;
       }
     });
 
@@ -56,8 +56,8 @@ export class ListComponent implements OnInit, OnDestroy, AfterViewInit{
       sortDirection: this.sort ? this.sort.direction : ''
     };
 
-    const staffListSubscr = this.staffService.getList(requestParams).subscribe();
-    this.unsubscribe.push(staffListSubscr)
+    const subscribe = this.service.getList(requestParams).subscribe();
+    this.unsubscribe.push(subscribe)
   }
 
   // Gère les événements de pagination et de tri
