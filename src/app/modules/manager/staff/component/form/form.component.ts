@@ -1,34 +1,47 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, Subscription} from "rxjs";
+import {StaffService, StaffType} from "../../../../../services/staff-service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-manager-staff-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+    selector: 'app-manager-staff-form',
+    templateUrl: './form.component.html',
+    styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit, OnDestroy {
-  isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  isLoading: boolean;
-  private unsubscribe: Subscription[] = [];
+    isLoading: boolean;
+    formGroup: FormGroup;
+    private unsubscribe: Subscription[] = [];
 
-  constructor(private cdr: ChangeDetectorRef) {
-    const loadingSubscr = this.isLoading$
-        .asObservable()
-        .subscribe((res) => (this.isLoading = res));
-    this.unsubscribe.push(loadingSubscr);
-  }
+    constructor(
+        private cdr: ChangeDetectorRef,
+        private fb: FormBuilder,
+        private staffService: StaffService
+    ) {
+        const loadingSubscr = this.staffService.isLoadingSubject
+            .asObservable()
+            .subscribe((res) => (this.isLoading = res));
+        this.unsubscribe.push(loadingSubscr);
+    }
 
-  ngOnInit(): void {}
+    ngOnInit(): void {
+        this.formGroup = this.fb.group({
+            firstName: ['', Validators.required],
+            lastName: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]]
+        });
+    }
 
-  saveSettings() {
-    this.isLoading$.next(true);
-    setTimeout(() => {
-      this.isLoading$.next(false);
-      this.cdr.detectChanges();
-    }, 1500);
-  }
+    onSubmit() {
+        if (this.formGroup.valid) {
+            this.staffService.post(this.formGroup.value).subscribe({
+                next: (staff: StaffType) => console.log('Staff created', staff),
+                error: (error) => console.error('There was an error!', error)
+            });
+        }
+    }
 
-  ngOnDestroy() {
-    this.unsubscribe.forEach((sb) => sb.unsubscribe());
-  }
+    ngOnDestroy() {
+        this.unsubscribe.forEach((sb) => sb.unsubscribe());
+    }
 }

@@ -1,21 +1,19 @@
-export class StaffModel {
-    name: string
-    description: string;
-    category: string;
-    price: Number;
-    duration: Number;
-    comission: Number;
-    createdAt: Date;
+import {UserModel} from "./user.model";
 
-    setStaff(_staff: unknown) {
-        const staff  = _staff as StaffModel
+export class StaffModel extends UserModel{
+    constructor(
+        firstName: string,
+        lastName: string,
+        email: string,
+    ) {
+        super(firstName, lastName, email, 'staff')
+    }
 
-        this.name = staff.name
-        this.price = staff.price
-        this.duration = staff.duration
-        this.comission = staff.comission
-        this.createdAt = staff.createdAt
-        this.description = staff.description
+    setModel(_staff: unknown) {
+        const staff = _staff as StaffModel
+
+        staff.role = 'staff'
+        super.setModel(staff)
     }
 
 }

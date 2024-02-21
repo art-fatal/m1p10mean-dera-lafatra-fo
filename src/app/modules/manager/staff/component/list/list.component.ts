@@ -13,7 +13,7 @@ import {Subscription} from "rxjs";
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit, AfterViewInit, OnDestroy{
-  displayedColumns: string[] = ['createdAt', 'name', 'price', 'duration', 'commission', 'actions']; // Exemple de colonnes
+  displayedColumns: string[] = ['createdAt', 'name', 'email', 'actions']; // Exemple de colonnes
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -52,7 +52,7 @@ export class ListComponent implements OnInit, AfterViewInit, OnDestroy{
       sortDirection: this.sort ? this.sort.direction : ''
     };
 
-    const staffListSubscr = this.staffService.getList(requestParams).subscribe();
+    const staffListSubscr = this.staffService.collection(requestParams).subscribe();
     this.unsubscribe.push(staffListSubscr)
   }
 

@@ -56,7 +56,7 @@ export class StaffService {
     }
 
     // public methods
-    getList(params: any): Observable<StaffModel[]> {
+    collection(params: any): Observable<StaffModel[]> {
         this.isLoadingSubject.next(true);
         return this.http.get<StaffModel[]>(this.apiUrl, {params}).pipe(
             map((data: StaffModel[]) => {
@@ -66,6 +66,22 @@ export class StaffService {
             catchError((err) => {
                 console.error('err', err);
                 return of([]);
+            }),
+            finalize(() => {
+                this.isLoadingSubject.next(false);
+        }));
+    }
+
+    post(data: StaffModel): Observable<StaffType> {
+        this.isLoadingSubject.next(true);
+        return this.http.post<StaffModel>(this.apiUrl, data).pipe(
+            map((data: StaffModel) => {
+                this.currentSubject.next(data)
+                return data;
+            }),
+            catchError((err) => {
+                console.error('err', err);
+                return of(undefined);
             }),
             finalize(() => {
                 this.isLoadingSubject.next(false);

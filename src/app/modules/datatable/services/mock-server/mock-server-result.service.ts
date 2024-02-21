@@ -35,7 +35,7 @@ export class MockServerResultService {
     const end = Math.min(start + page.size, page.totalElements);
     for (let i = start; i < end; i++) {
       const jsonObj = data[i];
-      const employee = new StaffModel();
+      const employee = new StaffModel("","","");
       pagedData.data.push(employee);
     }
     pagedData.page = page;
