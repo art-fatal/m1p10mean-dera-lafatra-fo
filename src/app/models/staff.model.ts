@@ -6,7 +6,7 @@ export class StaffModel extends UserModel{
         lastName: string,
         email: string,
     ) {
-        super(firstName, lastName, email, 'staff')
+        super(firstName, lastName, email,'staff')
     }
 
     setModel(_staff: unknown) {

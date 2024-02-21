@@ -1,4 +1,6 @@
 export abstract class UserModel {
+    public createdAt: Date = new Date();
+
     protected constructor(
         public firstName: string,
         public lastName: string,
