@@ -27,10 +27,10 @@
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions</th>
                     <td mat-cell *matCellDef="let row">
                         <div class="d-flex justify-content-start flex-shrink-0">
-                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                            <button (click)="edit(row)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 kt_staff_form_toggle">
                                 <span [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'"
                                       class="svg-icon svg-icon-3"></span>
-                            </a>
+                            </button>
                             <a href="#" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
                                 <span [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
                                       class="svg-icon svg-icon-3"></span>

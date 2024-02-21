@@ -2,11 +2,12 @@ import {UserModel} from "./user.model";
 export const ROLE = 'customer'
 export class CustomerModel extends UserModel{
     constructor(
+        _id: string,
         firstName: string,
         lastName: string,
         email: string,
     ) {
-        super(firstName, lastName, email, ROLE)
+        super(_id, firstName, lastName, email, ROLE)
     }
 
     setModel(_model: unknown) {

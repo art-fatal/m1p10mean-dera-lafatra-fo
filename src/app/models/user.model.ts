@@ -2,6 +2,7 @@ export abstract class UserModel {
     public createdAt: Date = new Date();
 
     protected constructor(
+        public _id: string,
         public firstName: string,
         public lastName: string,
         public email: string,

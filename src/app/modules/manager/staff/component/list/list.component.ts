@@ -4,8 +4,9 @@ import {CreateButtonComponent} from "./create-button/create-button.component";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatTableDataSource} from "@angular/material/table";
-import {StaffService} from "src/app/services/staff-service";
+import {StaffService, StaffType} from "src/app/services/staff-service";
 import {Subscription} from "rxjs";
+import {StaffModel} from "../../../../../models/staff.model";
 
 @Component({
   selector: 'app-list',
@@ -33,7 +34,7 @@ export class ListComponent implements OnInit, AfterViewInit, OnDestroy{
 
     this.loadData();
 
-    const staffCollectionSubscr = this.staffService.collection$.subscribe(data => {
+    const staffCollectionSubscr = this.staffService.collection$.subscribe((data: StaffType[]) => {
       this.dataSource.data = data;
       if (this.paginator) {
         this.paginator.length = this.staffService.collectionLength;
@@ -59,6 +60,12 @@ export class ListComponent implements OnInit, AfterViewInit, OnDestroy{
   // Gère les événements de pagination et de tri
   refreshDatatable() {
     this.loadData();
+  }
+
+  // Gère les événements de pagination et de tri
+  edit(item: StaffModel) {
+    this.staffService.isLoadingSubject.next(true)
+    this.staffService.currentSubject.next(item)
   }
 
   ngOnDestroy() {

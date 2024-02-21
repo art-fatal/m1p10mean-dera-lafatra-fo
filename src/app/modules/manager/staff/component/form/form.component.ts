@@ -11,6 +11,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class FormComponent implements OnInit, OnDestroy {
     isLoading: boolean;
     formGroup: FormGroup;
+    isEdit: boolean;
     private unsubscribe: Subscription[] = [];
 
     constructor(
@@ -21,7 +22,16 @@ export class FormComponent implements OnInit, OnDestroy {
         const loadingSubscr = this.staffService.isLoadingSubject
             .asObservable()
             .subscribe((res) => (this.isLoading = res));
+        const currentSubscr = this.staffService.currentSubject
+            .asObservable()
+            .subscribe((res) => {
+                if (res) {
+                    this.formGroup.patchValue(res)
+                    this.staffService.isLoadingSubject.next(false)
+                }
+            });
         this.unsubscribe.push(loadingSubscr);
+        this.unsubscribe.push(currentSubscr);
     }
 
     ngOnInit(): void {
