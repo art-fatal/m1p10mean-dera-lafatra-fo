@@ -10,6 +10,14 @@ const routes: Routes = [
     component: ErrorsComponent,
     children: [
       {
+        path: '401',
+        component: Error404Component,
+      },
+      {
+        path: '403',
+        component: Error404Component,
+      },
+      {
         path: '404',
         component: Error404Component,
       },

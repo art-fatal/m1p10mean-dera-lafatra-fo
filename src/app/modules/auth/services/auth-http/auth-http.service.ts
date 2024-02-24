@@ -15,7 +15,7 @@ export class AuthHTTPService {
 
   // public methods
   login(email: string, password: string): Observable<any> {
-    return this.http.post<AuthModel>(`${API_USERS_URL}/tokens`, {
+    return this.http.post<AuthModel>(`${API_USERS_URL}/login`, {
       email,
       password,
     });

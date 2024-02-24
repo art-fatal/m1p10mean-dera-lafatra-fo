@@ -40,6 +40,9 @@ import { SearchComponent } from "./components/aside/tabs/projects-tab/search/sea
 import { FormsModule } from "@angular/forms";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { ThemeModeModule } from "../partials/layout/theme-mode-switcher/theme-mode.module";
+import {AuthGuard} from "../../modules/auth/services/guard/auth.guard";
+import {StaffGuard} from "../../modules/auth/services/guard/staff.guard";
+import {ManagerGuard} from "../../modules/auth/services/guard/manager.guard";
 
 const routes: Routes = [
   {
@@ -48,11 +51,13 @@ const routes: Routes = [
     children: [
       {
         path: 'staff',
+        canActivate: [StaffGuard],
         loadChildren: () =>
             import('../../modules/staff/staff.module').then((m) => m.StaffModule),
       },
       {
         path: 'manager',
+        canActivate: [ManagerGuard],
         loadChildren: () =>
             import('../../modules/manager/manager.module').then((m) => m.ManagerModule),
       },

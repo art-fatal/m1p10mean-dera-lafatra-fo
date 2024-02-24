@@ -36,37 +36,37 @@
     <input
       class="form-control form-control-lg form-control-solid"
       type="text"
-      name="fullname"
-      formControlName="fullname"
-      placeholder="Fullname"
+      name="firstname"
+      formControlName="firstname"
+      placeholder="First Name"
       autocomplete="off"
       [ngClass]="{
-        'is-invalid': registrationForm.controls['fullname'].invalid,
-        'is-valid': registrationForm.controls['fullname'].valid
+        'is-invalid': registrationForm.controls['firstname'].invalid,
+        'is-valid': registrationForm.controls['firstname'].valid
       }"
     />
     <ng-container
       [ngTemplateOutlet]="formError"
       [ngTemplateOutletContext]="{
         validation: 'required',
-        message: 'Fullname is required',
-        control: registrationForm.controls['fullname']
+        message: 'First name is required',
+        control: registrationForm.controls['firstname']
       }"
     ></ng-container>
     <ng-container
       [ngTemplateOutlet]="formError"
       [ngTemplateOutletContext]="{
         validation: 'minlength',
-        message: 'Fullname should have at least 3 symbols',
-        control: registrationForm.controls['fullname']
+        message: 'First name should have at least 8 symbols',
+        control: registrationForm.controls['firstname']
       }"
     ></ng-container>
     <ng-container
       [ngTemplateOutlet]="formError"
       [ngTemplateOutletContext]="{
         validation: 'maxLength',
-        message: 'Fullname should have maximum 100 symbols',
-        control: registrationForm.controls['fullname']
+        message: 'First name should have maximum 100 symbols',
+        control: registrationForm.controls['firstname']
       }"
     ></ng-container>
   </div>
@@ -78,37 +78,37 @@
     <input
       class="form-control form-control-lg form-control-solid"
       type="text"
-      name="fullname"
-      formControlName="fullname"
-      placeholder="Fullname"
+      name="lastname"
+      formControlName="lastname"
+      placeholder="Last name"
       autocomplete="off"
       [ngClass]="{
-        'is-invalid': registrationForm.controls['fullname'].invalid,
-        'is-valid': registrationForm.controls['fullname'].valid
+        'is-invalid': registrationForm.controls['lastname'].invalid,
+        'is-valid': registrationForm.controls['lastname'].valid
       }"
     />
     <ng-container
       [ngTemplateOutlet]="formError"
       [ngTemplateOutletContext]="{
         validation: 'required',
-        message: 'Fullname is required',
-        control: registrationForm.controls['fullname']
+        message: 'Last name is required',
+        control: registrationForm.controls['lastname']
       }"
     ></ng-container>
     <ng-container
       [ngTemplateOutlet]="formError"
       [ngTemplateOutletContext]="{
         validation: 'minlength',
-        message: 'Fullname should have at least 3 symbols',
-        control: registrationForm.controls['fullname']
+        message: 'Last name should have at least 3 symbols',
+        control: registrationForm.controls['lastname']
       }"
     ></ng-container>
     <ng-container
       [ngTemplateOutlet]="formError"
       [ngTemplateOutletContext]="{
         validation: 'maxLength',
-        message: 'Fullname should have maximum 100 symbols',
-        control: registrationForm.controls['fullname']
+        message: 'Last name should have maximum 100 symbols',
+        control: registrationForm.controls['lastname']
       }"
     ></ng-container>
   </div>
