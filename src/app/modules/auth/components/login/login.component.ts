@@ -1,12 +1,13 @@
-import {Component, OnInit, OnDestroy, ChangeDetectorRef} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Subscription, Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {first} from 'rxjs/operators';
 import {UserModel} from '../../models/user.model';
 import {AuthService} from '../../services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResponseModel} from "../../models/response.model";
 import {TranslateService} from "@ngx-translate/core";
+import {Roles} from "../../../../enums/user/roles.enum";
 
 @Component({
     selector: 'app-login',
@@ -37,8 +38,13 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.isLoading$ = this.authService.isLoading$;
         // redirect to home if already logged in
         if (this.authService.currentUserValue) {
-
-            this.router.navigate(['/']);
+            if (this.authService.isGranted(Roles.MANAGER)) {
+                this.router.navigate(['/manager']);
+            } else if (this.authService.isGranted(Roles.STAFF)) {
+                this.router.navigate(['/staff'])
+            } else {
+                this.router.navigate(['/']);
+            }
         }
     }
 

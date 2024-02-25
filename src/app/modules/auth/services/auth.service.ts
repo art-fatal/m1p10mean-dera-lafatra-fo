@@ -30,7 +30,7 @@ export class AuthService implements OnDestroy {
   }
 
   isGranted(role: Roles): boolean {
-    return !!this.currentUserSubject.value?.roles.includes(role);
+    return this.currentUserSubject.value?.role === role;
   }
 
   set currentUserValue(user: UserType) {

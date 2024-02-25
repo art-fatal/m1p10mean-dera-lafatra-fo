@@ -17,7 +17,7 @@ export class ManagerGuard implements CanActivate {
     }
 
     // not logged in so redirect to 403 page with the return url
-    this.router.navigate(['/auth/403']);
+    this.router.navigate(['/error/403']);
     return false;
   }
 }

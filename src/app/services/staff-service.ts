@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, of, Subscription} from 'rxjs';
 import {catchError, finalize, map} from 'rxjs/operators';
-import {StaffModel} from 'src/app/models/staff.model';
+import { StaffModel} from 'src/app/models/staff.model';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
+import {mapToClientModel, mapToServerModel} from "./mapping.service";
+import StaffMapping from "../mappings/staff.mapping";
 
 export type StaffType = StaffModel | undefined;
 const API_USERS_URL = `${environment.apiUrl}`;
@@ -59,7 +61,8 @@ export class StaffService {
     collection(params: any): Observable<StaffModel[]> {
         this.isLoadingSubject.next(true);
         return this.http.get<StaffModel[]>(this.apiUrl, {params}).pipe(
-            map((data: StaffModel[]) => {
+            map((responseData: Array<any>) => {
+                const data = responseData.map(serverModel => mapToClientModel<StaffModel>(serverModel, StaffMapping));
                 this.collectionSubject.next(data)
                 return data;
             }),
@@ -74,8 +77,28 @@ export class StaffService {
 
     post(data: StaffModel): Observable<StaffType> {
         this.isLoadingSubject.next(true);
-        return this.http.post<StaffModel>(this.apiUrl, data).pipe(
-            map((data: StaffModel) => {
+        const serverData = mapToServerModel(data,StaffMapping)
+        return this.http.post<StaffModel>(this.apiUrl, serverData).pipe(
+            map((responseData: any) => {
+                const data:StaffModel = mapToClientModel(responseData, StaffMapping)
+                this.currentSubject.next(data)
+                return data;
+            }),
+            catchError((err) => {
+                console.error('err', err);
+                return of(undefined);
+            }),
+            finalize(() => {
+                this.isLoadingSubject.next(false);
+        }));
+    }
+
+    put(objectId:string, data: StaffModel): Observable<StaffType> {
+        this.isLoadingSubject.next(true);
+        const serverData = mapToServerModel(data,StaffMapping)
+        return this.http.put<StaffModel>(`${this.apiUrl}/${objectId}`, serverData).pipe(
+            map((responseData: any) => {
+                const data:StaffModel = mapToClientModel(responseData, StaffMapping)
                 this.currentSubject.next(data)
                 return data;
             }),

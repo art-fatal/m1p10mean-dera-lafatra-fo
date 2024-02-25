@@ -7,7 +7,7 @@ export class UserModel extends AuthModel {
   password: string;
   email: string;
   pic: string;
-  roles: Roles[] = [];
+  role: Roles;
   phone: string;
   address?: AddressModel;
   firstname: string;
@@ -19,7 +19,7 @@ export class UserModel extends AuthModel {
     this.password = user.password || '';
     this.email = user.email || '';
     this.pic = user.pic || './assets/media/avatars/blank.png';
-    this.roles = user.roles || [];
+    this.role = user.role || '';
     this.phone = user.phone || '';
     this.address = user.address;
   }

@@ -2,6 +2,7 @@ import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, Subscription} from "rxjs";
 import {StaffService, StaffType} from "../../../../../services/staff-service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
     selector: 'app-manager-staff-form',
@@ -17,7 +18,9 @@ export class FormComponent implements OnInit, OnDestroy {
     constructor(
         private cdr: ChangeDetectorRef,
         private fb: FormBuilder,
-        private staffService: StaffService
+        private staffService: StaffService,
+        private router: Router,
+        private route: ActivatedRoute,
     ) {
         const loadingSubscr = this.staffService.isLoadingSubject
             .asObservable()
@@ -26,6 +29,7 @@ export class FormComponent implements OnInit, OnDestroy {
             .asObservable()
             .subscribe((res) => {
                 if (res) {
+                    this.isEdit = true
                     this.formGroup.patchValue(res)
                     this.staffService.isLoadingSubject.next(false)
                 }
@@ -44,10 +48,20 @@ export class FormComponent implements OnInit, OnDestroy {
 
     onSubmit() {
         if (this.formGroup.valid) {
-            this.staffService.post(this.formGroup.value).subscribe({
-                next: (staff: StaffType) => console.log('Staff created', staff),
-                error: (error) => console.error('There was an error!', error)
-            });
+            // const idToEdit = this.route.snapshot.paramMap.get('id')
+            const idToEdit = this.staffService.currentValue?.id
+
+            if (this.isEdit && idToEdit){
+                this.staffService.put(idToEdit,this.formGroup.value).subscribe({
+                    next: (staff: StaffType) => console.log('Staff updated', staff),
+                    error: (error) => console.error('There was an error!', error)
+                });
+            }else{
+                this.staffService.post(this.formGroup.value).subscribe({
+                    next: (staff: StaffType) => console.log('Staff created', staff),
+                    error: (error) => console.error('There was an error!', error)
+                });
+            }
         }
     }
 

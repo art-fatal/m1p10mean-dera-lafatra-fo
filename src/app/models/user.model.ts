@@ -2,11 +2,12 @@ export abstract class UserModel {
     public createdAt: Date = new Date();
 
     protected constructor(
-        public _id: string,
+        public id: string,
         public firstName: string,
         public lastName: string,
         public email: string,
-        public role: string
+        public role: string,
+        public password?: string | undefined,
     ) {
     }
 
@@ -17,6 +18,7 @@ export abstract class UserModel {
         this.lastName = model.lastName
         this.email = model.email
         this.role = model.role
+        this.password = model.password
     }
 
 }
