@@ -4,14 +4,15 @@ import {mapToClientModel, mapToServerModel} from "./mapping.service";
 import {HttpService} from "./http.service";
 import {ServiceModel} from "../models/service.model";
 import ServiceMapping from "../mappings/service.mapping";
+import {AuthService} from "../modules/auth";
 
 @Injectable({
     providedIn: 'root',
 })
 export class ServiceService extends HttpService<ServiceModel, any> {
 
-    constructor(http: HttpClient) {
-        super(http, "services")
+    constructor(http: HttpClient, authService: AuthService) {
+        super(http, "services", authService)
     }
 
     protected mapToClientModel(serverModel: any): ServiceModel {

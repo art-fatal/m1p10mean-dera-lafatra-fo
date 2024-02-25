@@ -4,14 +4,15 @@ import {HttpClient} from "@angular/common/http";
 import {mapToClientModel, mapToServerModel} from "./mapping.service";
 import StaffMapping from "../mappings/staff.mapping";
 import {HttpService} from "./http.service";
+import {AuthService} from "../modules/auth";
 
 @Injectable({
     providedIn: 'root',
 })
 export class StaffService extends HttpService<StaffModel, any> {
 
-    constructor(http: HttpClient) {
-        super(http, "users")
+    constructor(http: HttpClient, authService: AuthService) {
+        super(http, "users", authService)
     }
 
     protected mapToClientModel(serverModel: any): StaffModel {

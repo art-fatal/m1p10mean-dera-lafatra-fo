@@ -88,7 +88,6 @@ export class LoginComponent implements OnInit, OnDestroy {
             .login(this.f.email.value, this.f.password.value)
             .pipe(first())
             .subscribe((user: UserModel | undefined | ResponseModel) => {
-                console.log("login cop", user)
                 if (user) {
                     if ((user as ResponseModel).message !== undefined) {
                         this.hasError = (user as ResponseModel).message

@@ -36,7 +36,7 @@
                     data-kt-scroll-dependencies="#kt_service_form_header, #kt_service_form_footer"
                     data-kt-scroll-offset="5px"
             >
-                <form novalidate="" class="form">
+                <form [formGroup]="formGroup" novalidate="" class="form" (ngSubmit)="onSubmit()">
                     <div class="card-body border-top p-9">
                         <div class="row mb-6">
                             <label class="col-lg-4 col-form-label required fw-bold fs-6">Name</label>
@@ -46,64 +46,63 @@
                                         class="form-control form-control-lg form-control-solid"
                                         placeholder="Service name"
                                         name="name"
-                                        value="Coiffure"
+                                        formControlName="name"
                                 />
                             </div>
                         </div>
                         <div class="row mb-6">
-                            <label class="col-lg-4 col-form-label required fw-bold fs-6">Price</label>
+                            <label class="col-lg-4 col-form-label required fw-bold fs-6">Price (€)</label>
                             <div class="col-lg-8">
                                 <input
-                                        type="text"
-                                        class="
-                                        form-control form-control-lg form-control-solid
-                                        mb-3 mb-lg-0
-                                    "
-                                        placeholder="First name"
-                                        name="fName"
-                                        value="Max"
+                                        min="0" max="9999999999"
+                                        type="number"
+                                        class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                                        placeholder="49"
+                                        name="price"
+                                        formControlName="price"
                                 />
                             </div>
                         </div>
                         <div class="row mb-6">
                             <label class="col-lg-4 col-form-label fw-bold fs-6">
-                                <span class="required">Duration</span>
+                                <span class="required">Duration (min)</span>
                             </label>
                             <div class="col-lg-8 fv-row">
                                 <input
-                                        type="tel"
+                                        min="0" max="1440"
+                                        type="number"
                                         class="form-control form-control-lg form-control-solid"
-                                        placeholder="Phone number"
-                                        name="contactPhone"
-                                        value="044 3276 454 935"
+                                        placeholder="30"
+                                        name="duration"
+                                        formControlName="duration"
                                 />
                             </div>
                         </div>
                         <div class="row mb-6">
                             <label class="col-lg-4 col-form-label fw-bold fs-6">
-                                <span class="required">Commission</span>
+                                <span class="required">Commission (%)</span>
                             </label>
                             <div class="col-lg-8 fv-row">
                                 <input
-                                        type="tel"
+                                        min="0" max="100"
+                                        type="number"
                                         class="form-control form-control-lg form-control-solid"
-                                        placeholder="Phone number"
-                                        name="contactPhone"
-                                        value="044 3276 454 935"
+                                        placeholder="15"
+                                        name="commission"
+                                        formControlName="commission"
                                 />
                             </div>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-end py-6 px-9">
                         <button
-                                type="button"
+                                type="submit"
                                 class="btn btn-primary"
-                                [disabled]="isLoading"
-                                (click)="saveSettings()"
+                                [disabled]="isLoading || !formGroup.valid"
                         >
                             <ng-container *ngIf="!isLoading">Save Changes</ng-container>
                             <ng-container *ngIf="isLoading">
-                                <span clas="indicator-progress" [style.display]="'block'">
+                                <span class="indicator-progress" [style.display]="'block'">
                                   Please wait...{{ " " }}
                                     <span
                                             class="spinner-border spinner-border-sm align-middle ms-2"

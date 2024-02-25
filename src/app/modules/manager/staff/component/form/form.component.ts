@@ -23,8 +23,7 @@ export class FormComponent implements OnInit, OnDestroy {
         private router: Router,
         private route: ActivatedRoute,
     ) {
-        const loadingSubscr = this.staffService.isLoadingSubject
-            .asObservable()
+        const loadingSubscr = this.staffService.isLoading$
             .subscribe((res) => (this.isLoading = res));
         const currentSubscr = this.staffService.currentSubject
             .asObservable()

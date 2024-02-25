@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {InlineSVGModule} from 'ng-inline-svg-2';
 import {ServiceComponent} from "./service.component";
@@ -30,7 +30,8 @@ import {MatTableModule} from "@angular/material/table";
         DynamicTableModule,
         MatPaginatorModule,
         MatSortModule,
-        MatTableModule
+        MatTableModule,
+        ReactiveFormsModule
     ],
 })
 export class ServiceModule {

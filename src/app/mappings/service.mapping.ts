@@ -3,5 +3,5 @@ export default {
     name: "service",
     duration: "duree",
     price: "tarif",
-    commission: "_id",
+    commission: "commission",
 };

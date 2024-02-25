@@ -128,15 +128,14 @@ export class AuthService implements OnDestroy {
     return false;
   }
 
-  private getAuthFromLocalStorage(): AuthModel | undefined {
+  public getAuthFromLocalStorage(): AuthModel | undefined {
     try {
       const lsValue = localStorage.getItem(this.authLocalStorageToken);
       if (!lsValue) {
         return undefined;
       }
 
-      const authData = JSON.parse(lsValue);
-      return authData;
+      return JSON.parse(lsValue);
     } catch (error) {
       console.error(error);
       return undefined;
