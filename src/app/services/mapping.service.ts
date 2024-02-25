@@ -1,4 +1,4 @@
-function mapToServerModel<T extends Record<string, any>>(clientModel: T, mapping: T): any {
+function mapToServerModel(clientModel: any, mapping: any): any {
     const serverModel: Record<string, any> = {};
     Object.keys(clientModel).forEach(key => {
         const serverKey = mapping[key] || key;

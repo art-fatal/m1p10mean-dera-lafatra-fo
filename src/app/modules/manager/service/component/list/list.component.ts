@@ -7,6 +7,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {Subscription} from "rxjs";
 import {ServiceService} from "src/app/services/service-service";
+import {ServiceModel} from "../../../../../models/service.model";
 
 @Component({
   selector: 'app-list',
@@ -17,8 +18,8 @@ import {ServiceService} from "src/app/services/service-service";
   ]
 })
 export class ListComponent implements OnInit, OnDestroy, AfterViewInit{
-  displayedColumns: string[] = ['createdAt', 'name', 'price', 'duration', 'commission', 'actions']; // Exemple de colonnes
-  dataSource = new MatTableDataSource();
+  displayedColumns: string[] = ['name', 'price', 'duration', 'commission', 'actions']; // Exemple de colonnes
+  dataSource = new MatTableDataSource<ServiceModel>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -37,14 +38,14 @@ export class ListComponent implements OnInit, OnDestroy, AfterViewInit{
 
     this.loadData();
 
-    const staffCollectionSubscr = this.service.collection$.subscribe(data => {
+    const collectionSubscr = this.service.collection$.subscribe(data => {
       this.dataSource.data = data;
       if (this.paginator) {
         this.paginator.length = this.service.collectionLength;
       }
     });
 
-    this.unsubscribe.push(staffCollectionSubscr)
+    this.unsubscribe.push(collectionSubscr)
   }
 
   loadData() {
@@ -56,8 +57,8 @@ export class ListComponent implements OnInit, OnDestroy, AfterViewInit{
       sortDirection: this.sort ? this.sort.direction : ''
     };
 
-    const subscribe = this.service.getList(requestParams).subscribe();
-    this.unsubscribe.push(subscribe)
+    const collectionSubscr = this.service.collection(requestParams).subscribe();
+    this.unsubscribe.push(collectionSubscr)
   }
 
   // Gère les événements de pagination et de tri
