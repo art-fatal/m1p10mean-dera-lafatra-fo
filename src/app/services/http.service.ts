@@ -19,6 +19,7 @@ export abstract class HttpService<TModel, TServerModel> {
     isLoadingSubject: BehaviorSubject<boolean>;
     protected httpHeaders: HttpHeaders;
     protected defaultOptions: { headers: any };
+    collectionParams: {};
 
     get apiUrl(): string {
         return `${API_USERS_URL}/${this.resource}`;
@@ -58,9 +59,9 @@ export abstract class HttpService<TModel, TServerModel> {
     }
 
     // public methods
-    collection(params: any): Observable<TModel[]> {
+    collection(): Observable<TModel[]> {
         this.isLoadingSubject.next(true);
-        return this.http.get<TModel[]>(this.apiUrl, {params, ...this.defaultOptions}).pipe(
+        return this.http.get<TModel[]>(this.apiUrl, {...this.collectionParams, ...this.defaultOptions}).pipe(
             map((responseData: Array<any>) => {
                 const data = responseData.map(serverModel => this.mapToClientModel(serverModel));
                 this.collectionSubject.next(data)
@@ -111,6 +112,16 @@ export abstract class HttpService<TModel, TServerModel> {
             }));
     }
 
+    delete (objectId: string) {
+        return this.http.delete<any>(`${this.apiUrl}/${objectId}`, this.defaultOptions).pipe(
+            catchError((err) => {
+                    console.error('err', err);
+                return of(undefined);
+            }),
+            finalize(() => {
+                this.isLoadingSubject.next(false);
+            }));
+    }
     protected abstract mapToClientModel(serverModel: TServerModel): TModel
 
     protected abstract mapToServerModel(clientModel: TModel): TServerModel

@@ -33,14 +33,14 @@
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions</th>
                     <td mat-cell *matCellDef="let row">
                         <div class="d-flex justify-content-start flex-shrink-0">
-                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                            <button (click)="edit(row)" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 kt_service_form_toggle">
                                 <span [inlineSVG]="'./assets/media/icons/duotune/art/art005.svg'"
                                       class="svg-icon svg-icon-3"></span>
-                            </a>
-                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
+                            </button>
+                            <button (click)="fireDelete(row)" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm">
                                 <span [inlineSVG]="'./assets/media/icons/duotune/general/gen027.svg'"
                                       class="svg-icon svg-icon-3"></span>
-                            </a>
+                            </button>
                         </div>
                     </td>
                 </ng-container>
@@ -55,3 +55,17 @@
     </div>
     <!-- begin::Body -->
 </div>
+
+
+<swal #deleteSwal [swalOptions]="swalOptions" title="Are you sure to delete?" text="This cannot be undone" icon="warning" [showCancelButton]="true"
+      [focusCancel]="true" (confirm)="delete()" confirmButtonText="Confirm"
+      [customClass]="{confirmButton: 'btn btn-danger', cancelButton: 'btn btn-active-light'}">
+</swal>
+
+<swal #successSwal [swalOptions]="swalOptions" title="Delete successfully!" text="" icon="success" confirmButtonText="Cool!"
+      [customClass]="{confirmButton: 'btn btn-success'}">
+</swal>
+
+<swal #errorSwal [swalOptions]="swalOptions" title="There was an error!" [text]="error" icon="error" confirmButtonText="Ok"
+      [customClass]="{confirmButton: 'btn btn-outline-danger'}">
+</swal>

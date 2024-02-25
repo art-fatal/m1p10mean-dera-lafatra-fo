@@ -35,6 +35,7 @@ export class ListComponent implements OnInit, AfterViewInit, OnDestroy{
     this.loadData();
 
     const staffCollectionSubscr = this.staffService.collection$.subscribe((data: StaffModel[]) => {
+      console.log("data change")
       this.dataSource.data = data;
       if (this.paginator) {
         this.paginator.length = this.staffService.collectionLength;
@@ -46,14 +47,13 @@ export class ListComponent implements OnInit, AfterViewInit, OnDestroy{
 
   loadData() {
     // Exemple de paramètres, à adapter selon votre API
-    const requestParams = {
+    this.staffService.collectionParams = {
       page: this.paginator ? this.paginator.pageIndex + 1 : 1,
       pageSize: this.paginator ? this.paginator.pageSize : 10,
       sortField: this.sort ? this.sort.active : '',
       sortDirection: this.sort ? this.sort.direction : ''
     };
-
-    const staffListSubscr = this.staffService.collection(requestParams).subscribe();
+    const staffListSubscr = this.staffService.collection().subscribe();
     this.unsubscribe.push(staffListSubscr)
   }
 

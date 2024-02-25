@@ -8,6 +8,8 @@ import {MatSort} from "@angular/material/sort";
 import {Subscription} from "rxjs";
 import {ServiceService} from "src/app/services/service-service";
 import {ServiceModel} from "../../../../../models/service.model";
+import {SwalComponent} from "@sweetalert2/ngx-sweetalert2";
+import {SweetAlertOptions} from "sweetalert2";
 
 @Component({
   selector: 'app-list',
@@ -24,7 +26,20 @@ export class ListComponent implements OnInit, OnDestroy, AfterViewInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  @ViewChild('deleteSwal')
+  public readonly deleteSwal!: SwalComponent;
+
+  @ViewChild('successSwal')
+  public readonly successSwal!: SwalComponent;
+
+  @ViewChild('errorSwal')
+  public readonly errorSwal!: SwalComponent;
+
   private unsubscribe: Subscription[] = [];
+
+  swalOptions: SweetAlertOptions = { buttonsStyling: false };
+  private selectedItem: ServiceModel;
+  error: string;
 
   constructor(private toolbarAction: ToolbarActionService,private service: ServiceService) {}
 
@@ -50,20 +65,44 @@ export class ListComponent implements OnInit, OnDestroy, AfterViewInit{
 
   loadData() {
     // Exemple de paramètres, à adapter selon votre API
-    const requestParams = {
+    this.service.collectionParams = {
       page: this.paginator ? this.paginator.pageIndex + 1 : 1,
       pageSize: this.paginator ? this.paginator.pageSize : 10,
       sortField: this.sort ? this.sort.active : '',
       sortDirection: this.sort ? this.sort.direction : ''
     };
-
-    const collectionSubscr = this.service.collection(requestParams).subscribe();
+    const collectionSubscr = this.service.collection().subscribe();
     this.unsubscribe.push(collectionSubscr)
   }
 
   // Gère les événements de pagination et de tri
   refreshDatatable() {
     this.loadData();
+  }
+
+  edit(item: ServiceModel) {
+    this.service.isLoadingSubject.next(true)
+    this.service.currentSubject.next(item)
+  }
+
+  fireDelete(item: ServiceModel) {
+    this.selectedItem = item
+    this.deleteSwal.fire();
+  }
+
+  delete(){
+    this.service.delete(this.selectedItem.id).subscribe({
+      next: (response) => {
+        if (response){
+          this.successSwal.fire()
+          this.loadData()
+        }else{
+          this.error = ""
+          this.errorSwal.fire()
+        }
+      },
+      error: (error) => console.error('There was an error!', error)
+    });
   }
 
   ngOnDestroy() {

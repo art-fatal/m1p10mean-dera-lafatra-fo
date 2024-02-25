@@ -1,9 +1,7 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Subscription} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
 import {ServiceService} from "../../../../../services/service-service";
-import {ServiceModel} from "../../../../../models/service.model";
 
 @Component({
   selector: 'app-manager-service-form',
@@ -16,12 +14,11 @@ export class FormComponent implements OnInit, OnDestroy {
   isEdit: boolean;
   private unsubscribe: Subscription[] = [];
 
+  @ViewChild('closeButton') closeButtonRef: ElementRef;
+
   constructor(
-      private cdr: ChangeDetectorRef,
       private fb: FormBuilder,
       private service: ServiceService,
-      private router: Router,
-      private route: ActivatedRoute,
   ) {
     const loadingSubscr = this.service.isLoadingSubject
         .asObservable()
@@ -55,12 +52,20 @@ export class FormComponent implements OnInit, OnDestroy {
 
       if (this.isEdit && idToEdit){
         this.service.put(idToEdit,this.formGroup.value).subscribe({
-          next: (model: ServiceModel | undefined) => console.log('Staff updated', model),
+          next: () => {
+            this.formGroup.reset()
+            this.service.collection().subscribe()
+            this.closeButtonRef.nativeElement.click();
+          },
           error: (error) => console.error('There was an error!', error)
         });
       }else{
         this.service.post(this.formGroup.value).subscribe({
-          next: (model: ServiceModel | undefined) => console.log('Staff created', model),
+          next: () => {
+            this.formGroup.reset()
+            this.service.collection().subscribe()
+            this.closeButtonRef.nativeElement.click();
+          },
           error: (error) => console.error('There was an error!', error)
         });
       }
