@@ -2,12 +2,12 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable, Subscription} from 'rxjs';
 import {first} from 'rxjs/operators';
-import {UserModel} from '../../models/user.model';
 import {AuthService} from '../../services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ResponseModel} from "../../models/response.model";
 import {TranslateService} from "@ngx-translate/core";
 import {Roles} from "../../../../enums/user/roles.enum";
+import {UserModel} from "../../../../models/user.model";
 
 @Component({
     selector: 'app-login',

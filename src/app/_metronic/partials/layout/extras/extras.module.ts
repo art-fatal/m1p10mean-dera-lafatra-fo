@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {InlineSVGModule} from 'ng-inline-svg-2';
 import {NotificationsInnerComponent} from './dropdown-inner/notifications-inner/notifications-inner.component';
@@ -10,6 +10,7 @@ import {TranslationModule} from '../../../../modules/i18n';
 import {SearchResultInnerComponent} from "./dropdown-inner/search-result-inner/search-result-inner.component";
 import {NgbTooltipModule} from "@ng-bootstrap/ng-bootstrap";
 import {FormsModule} from "@angular/forms";
+import {CapitalizePipe} from "../../../../pipe/capitalize.pipe";
 
 @NgModule({
   declarations: [
@@ -18,8 +19,9 @@ import {FormsModule} from "@angular/forms";
     SearchResultInnerComponent,
     UserInnerComponent,
     LayoutScrollTopComponent,
+    CapitalizePipe,
   ],
-  imports: [CommonModule, FormsModule, InlineSVGModule, RouterModule, TranslationModule, NgbTooltipModule],
+    imports: [CommonModule, FormsModule, InlineSVGModule, RouterModule, TranslationModule, NgbTooltipModule, NgOptimizedImage],
   exports: [
     NotificationsInnerComponent,
     QuickLinksInnerComponent,

@@ -7,16 +7,9 @@ export class StaffModel extends UserModel {
         firstName: string,
         lastName: string,
         email: string,
-        password?: string | undefined,
+        password: string,
     ) {
+
         super(_id, firstName, lastName, email, Roles.STAFF, password)
     }
-
-    setModel(_staff: unknown) {
-        const staff = _staff as StaffModel
-
-        staff.role = 'staff'
-        super.setModel(staff)
-    }
-
 }

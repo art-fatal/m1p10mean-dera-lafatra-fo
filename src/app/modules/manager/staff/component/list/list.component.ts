@@ -35,7 +35,6 @@ export class ListComponent implements OnInit, AfterViewInit, OnDestroy{
     this.loadData();
 
     const staffCollectionSubscr = this.staffService.collection$.subscribe((data: StaffModel[]) => {
-      console.log("data change")
       this.dataSource.data = data;
       if (this.paginator) {
         this.paginator.length = this.staffService.collectionLength;

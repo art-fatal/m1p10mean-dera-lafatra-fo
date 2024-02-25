@@ -1,13 +1,15 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {BehaviorSubject, Observable, of, Subscription} from 'rxjs';
 import {catchError, finalize, map, switchMap} from 'rxjs/operators';
-import {UserModel} from '../models/user.model';
 import {AuthModel} from '../models/auth.model';
 import {AuthHTTPService} from './auth-http';
 import {environment} from 'src/environments/environment';
 import {Router} from '@angular/router';
 import {ResponseModel} from "../models/response.model";
 import {Roles} from "../../../enums/user/roles.enum";
+import {mapToClientModel} from "../../../services/mapping.service";
+import StaffMapping from "../../../mappings/staff.mapping";
+import {UserModel} from "../../../models/user.model";
 
 export type UserType = UserModel | undefined;
 
@@ -25,7 +27,7 @@ export class AuthService implements OnDestroy {
   currentUserSubject: BehaviorSubject<UserType>;
   isLoadingSubject: BehaviorSubject<boolean>;
 
-  get currentUserValue(): UserType {
+  get currentUserValue(): UserModel | undefined {
     return this.currentUserSubject.value;
   }
 
@@ -83,9 +85,10 @@ export class AuthService implements OnDestroy {
 
     this.isLoadingSubject.next(true);
     return this.authHttpService.getUserByToken(auth.token).pipe(
-      map((user: UserType) => {
+      map((user: any) => {
         if (user) {
-          this.currentUserSubject.next(user);
+          const userModel = mapToClientModel<UserModel>(user, StaffMapping)
+          this.currentUserSubject.next(userModel);
         } else {
           this.logout();
         }

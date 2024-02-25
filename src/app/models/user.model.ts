@@ -7,18 +7,7 @@ export abstract class UserModel {
         public lastName: string,
         public email: string,
         public role: string,
-        public password?: string | undefined,
+        public password: string,
     ) {
     }
-
-    protected setModel(_model: unknown) {
-        const model = _model as UserModel
-
-        this.firstName = model.firstName
-        this.lastName = model.lastName
-        this.email = model.email
-        this.role = model.role
-        this.password = model.password
-    }
-
 }

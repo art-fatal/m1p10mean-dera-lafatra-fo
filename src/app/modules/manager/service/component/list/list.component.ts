@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ToolbarActionService} from "../../../../../_metronic/layout/core/toolbar-action.service";
 import {CreateButtonComponent} from "./create-button/create-button.component";
-import {MockServerResultService} from "../../../../datatable/services/mock-server/mock-server-result.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
@@ -13,7 +12,6 @@ import {SweetAlertOptions} from "sweetalert2";
 
 @Component({
   selector: 'app-list',
-  providers: [MockServerResultService],
   templateUrl: './list.component.html',
   styleUrls: [
       './list.component.scss',

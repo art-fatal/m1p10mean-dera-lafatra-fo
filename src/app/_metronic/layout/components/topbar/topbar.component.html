@@ -25,10 +25,12 @@
     data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
 
     <!--begin::Name-->
-    <div class="d-none d-md-flex flex-column align-items-end justify-content-center me-2">
-      <span class="text-muted fs-7 fw-bold lh-1 mb-2">Hello</span>
-      <span class="text-dark fs-base fw-bolder lh-1">Richard</span>
-    </div>
+      <ng-container *ngIf="user">
+          <div class="d-none d-md-flex flex-column align-items-end justify-content-center me-2">
+              <span class="text-muted fs-7 fw-bold lh-1 mb-2">{{ user.firstName }}</span>
+              <span class="text-dark fs-base fw-bolder lh-1">{{ user.lastName }}</span>
+          </div>
+      </ng-container>
     <!--end::Name-->
 
     <!--begin::Symbol-->

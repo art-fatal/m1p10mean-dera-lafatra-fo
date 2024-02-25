@@ -1,20 +1,19 @@
 import {UserModel} from "./user.model";
-export const ROLE = 'customer'
+import {Roles} from "../enums/user/roles.enum";
 export class CustomerModel extends UserModel{
     constructor(
         _id: string,
         firstName: string,
         lastName: string,
         email: string,
+        password: string,
     ) {
-        super(_id, firstName, lastName, email, ROLE)
+        super(_id, firstName, lastName, email, Roles.CUSTOMER, password)
     }
 
-    setModel(_model: unknown) {
+    public static setModel(_model: unknown) {
         const model = _model as CustomerModel
-
-        model.role = ROLE
-        super.setModel(model)
+        return new CustomerModel(model.id,model.firstName || '', model.lastName || '' ,model.email || '', model.password || '')
     }
 
 }

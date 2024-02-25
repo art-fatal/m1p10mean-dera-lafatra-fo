@@ -2,6 +2,7 @@ import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { TranslationService } from '../../../../../../modules/i18n';
 import { AuthService, UserType } from '../../../../../../modules/auth';
+import {Roles} from "../../../../../../enums/user/roles.enum";
 
 @Component({
   selector: 'app-user-inner',
@@ -16,6 +17,7 @@ export class UserInnerComponent implements OnInit, OnDestroy {
   user$: Observable<UserType>;
   langs = languages;
   private unsubscribe: Subscription[] = [];
+  protected readonly Roles = Roles;
 
   constructor(
     private auth: AuthService,
