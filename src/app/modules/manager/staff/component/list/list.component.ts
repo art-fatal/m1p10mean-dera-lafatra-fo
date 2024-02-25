@@ -14,7 +14,7 @@ import {StaffModel} from "../../../../../models/staff.model";
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit, AfterViewInit, OnDestroy{
-  displayedColumns: string[] = ['firstName', 'lastName', 'email', 'actions']; // Exemple de colonnes
+  displayedColumns: string[] = ['firstName', 'lastName', 'email',  'avgWorkingTime', 'actions']; // Exemple de colonnes
   dataSource = new MatTableDataSource<StaffModel>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

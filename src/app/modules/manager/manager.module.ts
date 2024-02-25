@@ -6,17 +6,20 @@ import {NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {InlineSVGModule} from 'ng-inline-svg-2';
 import {ManagerRoutingModule} from "./manager-routing.module";
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {WidgetsModule} from "../../_metronic/partials";
+import {DropdownMenusModule, WidgetsModule} from "../../_metronic/partials";
+import {NgApexchartsModule} from "ng-apexcharts";
 
 @NgModule({
   declarations: [ManagerComponent, DashboardComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    InlineSVGModule,
-    NgbTooltipModule,
-    ManagerRoutingModule,
-    WidgetsModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        InlineSVGModule,
+        NgbTooltipModule,
+        ManagerRoutingModule,
+        WidgetsModule,
+        DropdownMenusModule,
+        NgApexchartsModule
+    ],
 })
 export class ManagerModule {}

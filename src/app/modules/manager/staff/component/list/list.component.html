@@ -24,6 +24,12 @@
                 </ng-container>
 
                 <!-- Colonne Name -->
+                <ng-container matColumnDef="avgWorkingTime">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Avg. working time hour/day</th>
+                    <td mat-cell *matCellDef="let row"> 8</td>
+                </ng-container>
+
+                <!-- Colonne Name -->
                 <ng-container matColumnDef="actions">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions</th>
                     <td mat-cell *matCellDef="let row">
