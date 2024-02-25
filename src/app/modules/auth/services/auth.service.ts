@@ -1,11 +1,11 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { Observable, BehaviorSubject, of, Subscription } from 'rxjs';
-import { map, catchError, switchMap, finalize } from 'rxjs/operators';
-import { UserModel } from '../models/user.model';
-import { AuthModel } from '../models/auth.model';
-import { AuthHTTPService } from './auth-http';
-import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
+import {Injectable, OnDestroy} from '@angular/core';
+import {BehaviorSubject, Observable, of, Subscription} from 'rxjs';
+import {catchError, finalize, map, switchMap} from 'rxjs/operators';
+import {UserModel} from '../models/user.model';
+import {AuthModel} from '../models/auth.model';
+import {AuthHTTPService} from './auth-http';
+import {environment} from 'src/environments/environment';
+import {Router} from '@angular/router';
 import {ResponseModel} from "../models/response.model";
 import {Roles} from "../../../enums/user/roles.enum";
 
@@ -54,9 +54,7 @@ export class AuthService implements OnDestroy {
     this.isLoadingSubject.next(true);
     return this.authHttpService.login(email, password).pipe(
       map((auth: AuthModel) => {
-        const result = this.setAuthFromLocalStorage(auth);
-        console.log("login", auth)
-        return result;
+        return this.setAuthFromLocalStorage(auth);
       }),
       switchMap(() => this.getUserByToken()),
       catchError((err) => {

@@ -1,8 +1,9 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {BehaviorSubject, Subscription} from "rxjs";
-import {StaffService, StaffType} from "../../../../../services/staff-service";
+import {Subscription} from "rxjs";
+import {StaffService} from "../../../../../services/staff-service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
+import {StaffModel} from "../../../../../models/staff.model";
 
 @Component({
     selector: 'app-manager-staff-form',
@@ -53,12 +54,12 @@ export class FormComponent implements OnInit, OnDestroy {
 
             if (this.isEdit && idToEdit){
                 this.staffService.put(idToEdit,this.formGroup.value).subscribe({
-                    next: (staff: StaffType) => console.log('Staff updated', staff),
+                    next: (staff: StaffModel | undefined) => console.log('Staff updated', staff),
                     error: (error) => console.error('There was an error!', error)
                 });
             }else{
                 this.staffService.post(this.formGroup.value).subscribe({
-                    next: (staff: StaffType) => console.log('Staff created', staff),
+                    next: (staff: StaffModel | undefined) => console.log('Staff created', staff),
                     error: (error) => console.error('There was an error!', error)
                 });
             }

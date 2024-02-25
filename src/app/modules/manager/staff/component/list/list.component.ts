@@ -4,7 +4,7 @@ import {CreateButtonComponent} from "./create-button/create-button.component";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatTableDataSource} from "@angular/material/table";
-import {StaffService, StaffType} from "src/app/services/staff-service";
+import {StaffService} from "src/app/services/staff-service";
 import {Subscription} from "rxjs";
 import {StaffModel} from "../../../../../models/staff.model";
 
@@ -15,7 +15,7 @@ import {StaffModel} from "../../../../../models/staff.model";
 })
 export class ListComponent implements OnInit, AfterViewInit, OnDestroy{
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'actions']; // Exemple de colonnes
-  dataSource = new MatTableDataSource<StaffType>();
+  dataSource = new MatTableDataSource<StaffModel>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -34,7 +34,7 @@ export class ListComponent implements OnInit, AfterViewInit, OnDestroy{
 
     this.loadData();
 
-    const staffCollectionSubscr = this.staffService.collection$.subscribe((data: StaffType[]) => {
+    const staffCollectionSubscr = this.staffService.collection$.subscribe((data: StaffModel[]) => {
       this.dataSource.data = data;
       if (this.paginator) {
         this.paginator.length = this.staffService.collectionLength;
