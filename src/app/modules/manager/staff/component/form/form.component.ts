@@ -1,8 +1,7 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Subscription} from "rxjs";
 import {StaffService} from "../../../../../services/staff-service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
 import {StaffModel} from "../../../../../models/staff.model";
 
 @Component({
@@ -16,12 +15,11 @@ export class FormComponent implements OnInit, OnDestroy {
     isEdit: boolean;
     private unsubscribe: Subscription[] = [];
 
+    @ViewChild('closeButton') closeButtonRef: ElementRef;
+
     constructor(
-        private cdr: ChangeDetectorRef,
         private fb: FormBuilder,
         private staffService: StaffService,
-        private router: Router,
-        private route: ActivatedRoute,
     ) {
         const loadingSubscr = this.staffService.isLoading$
             .subscribe((res) => (this.isLoading = res));
@@ -53,12 +51,16 @@ export class FormComponent implements OnInit, OnDestroy {
 
             if (this.isEdit && idToEdit){
                 this.staffService.put(idToEdit,this.formGroup.value).subscribe({
-                    next: (staff: StaffModel | undefined) => console.log('Staff updated', staff),
+                    next: () => {
+                        this.afterSubmit()
+                    },
                     error: (error) => console.error('There was an error!', error)
                 });
             }else{
                 this.staffService.post(this.formGroup.value).subscribe({
-                    next: (staff: StaffModel | undefined) => console.log('Staff created', staff),
+                    next: () => {
+                        this.afterSubmit()
+                    },
                     error: (error) => console.error('There was an error!', error)
                 });
             }
@@ -67,5 +69,11 @@ export class FormComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.unsubscribe.forEach((sb) => sb.unsubscribe());
+    }
+
+    afterSubmit()  {
+        this.formGroup.reset()
+        this.staffService.collection().subscribe()
+        this.closeButtonRef.nativeElement.click();
     }
 }
