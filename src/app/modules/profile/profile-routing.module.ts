@@ -10,11 +10,11 @@ const routes: Routes = [
     component: ProfileComponent,
     children: [
       {
-        path: 'overview',
+        path: 'detail',
         component: OverviewComponent,
       },
       {
-        path: 'projects',
+        path: 'working-time',
         component: ProjectsComponent,
       },
       { path: '', redirectTo: 'overview', pathMatch: 'full' },

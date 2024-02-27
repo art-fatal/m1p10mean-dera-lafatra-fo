@@ -2,7 +2,7 @@
     <div class="menu-item px-3">
         <div class="menu-content d-flex align-items-center px-3">
             <div class="symbol symbol-50px me-5">
-                <img alt="Logo" ngSrc="./assets/media/logos/default.svg" height="56" width="80"/>
+                <img alt="Logo" ngSrc="./assets/media/logos/default-xl.svg" height="56" width="80"/>
             </div>
 
             <div class="d-flex flex-column">
@@ -20,7 +20,7 @@
     <div class="separator my-2"></div>
     <ng-container *ngIf="_user.role === Roles.STAFF">
         <div class="menu-item px-5">
-            <a routerLink="/crafted/pages/profile" class="menu-link px-5">
+            <a routerLink="/profile/detail" class="menu-link px-5">
                 My profile
             </a>
         </div>

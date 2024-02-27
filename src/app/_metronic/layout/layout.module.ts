@@ -62,6 +62,11 @@ const routes: Routes = [
             import('../../modules/manager/manager.module').then((m) => m.ManagerModule),
       },
       {
+        path: 'profile',
+        loadChildren: () =>
+            import('../../modules/profile/profile.module').then((m) => m.ProfileModule),
+      },
+      {
         path: '',
         loadChildren: () =>
             import('../../modules/customer/customer.module').then((m) => m.CustomerModule),

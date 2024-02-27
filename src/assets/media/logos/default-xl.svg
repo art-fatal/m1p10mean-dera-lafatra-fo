@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="filter0_i" x="24.9083" y="0" width="22.1854" height="55.3535" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="-4" dy="3"/>
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.904167 0 0 0 0 0.892865 0 0 0 0 0.892865 0 0 0 0.4 0"/>
+            <feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
+        </filter>
+        <linearGradient id="paint0_linear" x1="29" y1="24.5" x2="49" y2="30.5" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-opacity="0.2"/>
+            <stop offset="0.9115" stop-color="white" stop-opacity="0"/>
+        </linearGradient>
+    </defs>
+    <path d="M 389.328 90.305 L 485.645 387.233 C 490.896 403.423 478.698 419.983 461.523 419.983 L 390.702 419.983 C 379.665 419.983 369.898 412.91 366.555 402.495 L 271.34 105.561 C 266.153 89.39 278.345 72.892 295.482 72.892 L 365.212 72.892 C 376.219 72.892 385.965 79.927 389.328 90.305 Z" fill="#EF305E" style=""/>
+    <g filter="url(#filter0_i)" transform="matrix(6.3329010009765625, 0, 0, 6.270495891571045, 2.301772117614746, 72.88978576660156)" style="">
+        <path d="M46.5485 37.8L35.8243 3.44919C35.1837 1.39729 33.2837 0 31.1341 0C28.5177 0 26.3602 2.05036 26.227 4.66341L24.9187 30.3392C24.8723 31.2511 24.9823 32.1643 25.244 33.0391L31.0656 52.4999C31.5722 54.1934 33.1302 55.3535 34.8978 55.3535H40.3093C42.0503 55.3535 43.5914 54.2274 44.1203 52.5686L46.5267 45.0214C47.2752 42.6736 47.2828 40.1523 46.5485 37.8Z" fill="#F4F4F4"/>
+        <path d="M46.5485 37.8L35.8243 3.44919C35.1837 1.39729 33.2837 0 31.1341 0C28.5177 0 26.3602 2.05036 26.227 4.66341L24.9187 30.3392C24.8723 31.2511 24.9823 32.1643 25.244 33.0391L31.0656 52.4999C31.5722 54.1934 33.1302 55.3535 34.8978 55.3535H40.3093C42.0503 55.3535 43.5914 54.2274 44.1203 52.5686L46.5267 45.0214C47.2752 42.6736 47.2828 40.1523 46.5485 37.8Z" fill="url(#paint0_linear)"/>
+    </g>
+    <path d="M 130.965 72.892 L 200.723 72.892 C 217.801 72.892 229.986 89.289 224.907 105.436 L 130.667 404.896 C 127.369 415.381 117.564 422.517 106.483 422.517 L 36.725 422.517 C 19.646 422.517 7.461 406.119 12.54 389.973 L 106.78 90.512 C 110.078 80.027 119.877 72.892 130.965 72.892 Z" fill="#EF305E" style=""/>
+</svg>

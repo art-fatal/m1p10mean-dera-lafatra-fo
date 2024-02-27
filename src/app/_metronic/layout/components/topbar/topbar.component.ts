@@ -20,6 +20,5 @@ export class TopbarComponent implements OnInit{
 
   ngOnInit(): void {
     this.user = this.auth.currentUserValue
-    console.log(this.user)
   }
 }
