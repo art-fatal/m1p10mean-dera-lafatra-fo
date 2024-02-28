@@ -7,9 +7,12 @@ import { InlineSVGModule } from 'ng-inline-svg-2';
 import { AppointmentHistoryComponent } from './appointment-history/appointment-history.component';
 import {CustomerRoutingModule} from "./customer-routing.module";
 import {DropdownMenusModule, WidgetsModule} from "../../_metronic/partials";
+import { HomeComponent } from './home/home.component';
+import { FilterButtonComponent } from './home/filter-button/filter-button.component';
+import {SharedModule} from "../../_metronic/shared/shared.module";
 
 @NgModule({
-  declarations: [CustomerComponent, AppointmentHistoryComponent],
+  declarations: [CustomerComponent, AppointmentHistoryComponent, HomeComponent, FilterButtonComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -18,6 +21,7 @@ import {DropdownMenusModule, WidgetsModule} from "../../_metronic/partials";
         CustomerRoutingModule,
         WidgetsModule,
         DropdownMenusModule,
+        SharedModule,
     ],
 })
 export class CustomerModule {}

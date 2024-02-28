@@ -30,6 +30,7 @@ export class ManagerComponent implements OnInit {
     this.model.content.width = 'fluid';
     this.model.header.width = 'fluid';
     this.model.header.menu = false;
+    this.model.header.search = false;
     this.model.aside.display = true;
     this.layout.setConfig(this.model);
   }

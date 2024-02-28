@@ -1,0 +1,29 @@
+<ul class="nav">
+    <li class="nav-item">
+        <a class=" nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1 "
+            [ngClass]="activeClass('all')"
+            (click)="setTab('all')"
+            data-bs-toggle="tab"
+        >
+            All
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class=" nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1 "
+           data-bs-toggle="tab"
+           [ngClass]="activeClass('promo')"
+           (click)="setTab('promo')"
+        >
+            Promo
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class=" nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1 "
+           data-bs-toggle="tab"
+           [ngClass]="activeClass('favorite')"
+           (click)="setTab('favorite')"
+        >
+            Favorite
+        </a>
+    </li>
+</ul>

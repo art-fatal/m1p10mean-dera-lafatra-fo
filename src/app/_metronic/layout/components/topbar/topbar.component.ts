@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {AuthService} from "../../../../modules/auth";
 import {UserModel} from "../../../../models/user.model";
+import {LayoutService} from "../../core/layout.service";
 
 @Component({
   selector: "app-topbar",
@@ -12,13 +13,17 @@ export class TopbarComponent implements OnInit{
     "btn btn-icon btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px";
   toolbarButtonIconSizeClass: string = "svg-icon-1";
   protected user: UserModel | undefined;
+  protected searchDisplay: boolean;
 
 
   constructor(
+      private layout: LayoutService,
       private auth: AuthService,
   ) {}
 
   ngOnInit(): void {
     this.user = this.auth.currentUserValue
+    this.searchDisplay = this.layout.getProp("header.search") as boolean;
+
   }
 }

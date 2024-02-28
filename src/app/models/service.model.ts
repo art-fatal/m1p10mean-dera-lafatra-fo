@@ -5,6 +5,8 @@ export class ServiceModel {
         public duration: string,
         public price: number,
         public commission: number,
+        public promoPrice: number,
+        public favorite: boolean,
     ) {
     }
 }

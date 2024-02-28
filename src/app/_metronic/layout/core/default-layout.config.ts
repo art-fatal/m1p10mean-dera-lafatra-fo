@@ -20,6 +20,7 @@ export interface IHeader extends ILayoutComponent {
     tabletAndMobile: boolean;
   };
   menu?: boolean;
+  search?: boolean;
   menuIcon?: "svg" | "font";
 }
 
@@ -98,7 +99,7 @@ export interface IPageTitle extends ILayoutComponent {
   layout?: "default" | "select";
   direction?: "row" | "column";
   responsive: boolean;
-  responsiveBreakpoint: "lg" | "md" | "lg" | "300px";
+  responsiveBreakpoint: "lg" | "md" | "300px";
   responsiveTarget: string;
 }
 
@@ -177,6 +178,7 @@ export const DefaultLayoutConfig: ILayout = {
     componentName: "header",
     display: true, // Set true|false to show or hide Header
     menu: true,
+    search: true,
     width: "fixed", // Set fixed|fluid to change width type
     fixed: {
       desktop: true, // Set true|false to set fixed Header for desktop mode
@@ -208,7 +210,7 @@ export const DefaultLayoutConfig: ILayout = {
   pageTitle: {
     componentName: "pageTitle",
     display: true,
-    breadCrumbs: true,
+    breadCrumbs: false,
     description: true,
     direction: "row",
     layout: "default",

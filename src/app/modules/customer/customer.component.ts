@@ -40,6 +40,8 @@ export class CustomerComponent implements OnInit {
         this.model = this.layout.getConfig();
         this.model.content.width = 'fixed';
         this.model.header.width = 'fixed';
+        this.model.header.menu = true;
+        this.model.header.search = true;
         this.model.aside.display = false;
         this.layout.setConfig(this.model);
     }
