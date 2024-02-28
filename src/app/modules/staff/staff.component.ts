@@ -29,6 +29,7 @@ export class StaffComponent implements OnInit {
     this.model = this.layout.getConfig();
     this.model.content.width = 'fixed';
     this.model.header.width = 'fixed';
+    this.model.header.menu = false;
     this.model.aside.display = false;
     this.layout.setConfig(this.model);
   }

@@ -6,6 +6,7 @@ import {NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {InlineSVGModule} from 'ng-inline-svg-2';
 import {DashboardComponent} from './component/dashboard/dashboard.component';
 import {StaffRoutingModule} from "./staff-routing.module";
+import {SharedModule} from "../../_metronic/shared/shared.module";
 
 @NgModule({
   declarations: [StaffComponent, DashboardComponent],
@@ -15,6 +16,7 @@ import {StaffRoutingModule} from "./staff-routing.module";
     InlineSVGModule,
     NgbTooltipModule,
     StaffRoutingModule,
+    SharedModule,
   ],
 })
 export class StaffModule {}

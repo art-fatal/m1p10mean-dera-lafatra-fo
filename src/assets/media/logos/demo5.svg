@@ -1,8 +1,21 @@
-<svg width="110" height="26" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-    <g class="layer">
-        <title>Layer 1</title>
-        <path d="m0,6c0,-3.31 3.13,-6 6.98,-6l48.89,0c1.28,0 2.33,0.9 2.33,2l0,18c0,3.31 -3.13,6 -6.98,6l-48.89,0c-1.28,0 -2.33,-0.9 -2.33,-2l0,-18z" fill="#0094FF" id="svg_2" transform="matrix(1 0 0 1 0 0)"/>
-        <text fill="#ffffff" font-family="Helvetica" font-size="17" font-weight="bold" id="svg_6" stroke-width="0" text-anchor="middle" x="29.6" xml:space="preserve" y="18.65">m1p11</text>
-        <text fill="#3f3f3f" font-family="Inter, Helvetica, Sans-serif" font-size="17" id="svg_7" stroke-width="0" text-anchor="middle" transform="matrix(1 0 0 1 0 0)" x="83" xml:space="preserve" y="18.45">Mean</text>
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 53.737 351.193 105.833" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="filter0_i" x="24.9083" y="0" width="22.1854" height="55.3535" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="-4" dy="3"/>
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.904167 0 0 0 0 0.892865 0 0 0 0 0.892865 0 0 0 0.4 0"/>
+            <feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
+        </filter>
+    </defs>
+    <path d="M 70.498 75.749 L 85.565 124.497 C 86.386 127.155 84.478 129.874 81.792 129.874 L 70.713 129.874 C 68.987 129.874 67.459 128.713 66.936 127.003 L 52.042 78.254 C 51.23 75.599 53.138 72.89 55.819 72.89 L 66.726 72.89 C 68.448 72.89 69.972 74.045 70.498 75.749 Z" fill="#EF305E" style="" transform="matrix(1, 0, 0, 1, 0, -1.4210854715202004e-14)"/>
+    <g filter="url(#filter0_i)" transform="matrix(0.9906379580497742, 0, 0, 1.0294580459594727, 9.9569673538208, 72.88978576660155)" style="">
+        <path d="M46.5485 37.8L35.8243 3.44919C35.1837 1.39729 33.2837 0 31.1341 0C28.5177 0 26.3602 2.05036 26.227 4.66341L24.9187 30.3392C24.8723 31.2511 24.9823 32.1643 25.244 33.0391L31.0656 52.4999C31.5722 54.1934 33.1302 55.3535 34.8978 55.3535H40.3093C42.0503 55.3535 43.5914 54.2274 44.1203 52.5686L46.5267 45.0214C47.2752 42.6736 47.2828 40.1523 46.5485 37.8Z" style="fill: rgb(64, 67, 84);"/>
+        <path d="M46.5485 37.8L35.8243 3.44919C35.1837 1.39729 33.2837 0 31.1341 0C28.5177 0 26.3602 2.05036 26.227 4.66341L24.9187 30.3392C24.8723 31.2511 24.9823 32.1643 25.244 33.0391L31.0656 52.4999C31.5722 54.1934 33.1302 55.3535 34.8978 55.3535H40.3093C42.0503 55.3535 43.5914 54.2274 44.1203 52.5686L46.5267 45.0214C47.2752 42.6736 47.2828 40.1523 46.5485 37.8Z" style="fill: rgb(64, 67, 84);"/>
     </g>
+    <path d="M 30.083 72.89 L 40.995 72.89 C 43.667 72.89 45.573 75.582 44.779 78.233 L 30.037 127.397 C 29.521 129.118 27.987 130.29 26.254 130.29 L 15.342 130.29 C 12.67 130.29 10.764 127.598 11.558 124.947 L 26.3 75.783 C 26.816 74.061 28.349 72.89 30.083 72.89 Z" fill="#EF305E" style="" transform="matrix(1, 0, 0, 1, 0, -1.4210854715202004e-14)"/>
+    <text style="fill: rgb(64, 67, 84); font-family: 'Apple SD Gothic Neo'; font-size: 64px; font-weight: 600; white-space: pre;" x="83.348" y="134.133" transform="matrix(1, 0, 0, 1, 0, -1.4210854715202004e-14)">y beauty</text>
 </svg>
