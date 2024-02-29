@@ -4,7 +4,7 @@ export default <StaffModel>{
     lastName: "nom",
     firstName: "prenom",
     email: "email",
-    password: "hashedPassword",
+    password: "password",
     role: "role",
     id: "_id"
 };
