@@ -103,7 +103,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       result[key] = this.f[key].value;
     });
 
-    const newCustomer = new ManagerModel(
+    const newCustomer = new CustomerModel(
         "",
         this.f.firstname.value,
         this.f.lastname.value,
