@@ -22,13 +22,14 @@ import {CapitalizePipe} from "../../../../pipe/capitalize.pipe";
     CapitalizePipe,
   ],
     imports: [CommonModule, FormsModule, InlineSVGModule, RouterModule, TranslationModule, NgbTooltipModule, NgOptimizedImage],
-  exports: [
-    NotificationsInnerComponent,
-    QuickLinksInnerComponent,
-    SearchResultInnerComponent,
-    UserInnerComponent,
-    LayoutScrollTopComponent,
-  ],
+    exports: [
+        NotificationsInnerComponent,
+        QuickLinksInnerComponent,
+        SearchResultInnerComponent,
+        UserInnerComponent,
+        LayoutScrollTopComponent,
+        CapitalizePipe,
+    ],
 })
 export class ExtrasModule {
 }

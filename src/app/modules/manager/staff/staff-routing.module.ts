@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {StaffComponent} from "./staff.component";
 import {ListComponent} from "./component/list/list.component";
-import {WidgetsModule} from "../../../_metronic/partials";
+import {ExtrasModule, WidgetsModule} from "../../../_metronic/partials";
 import {FormComponent} from "./component/form/form.component";
 import {InlineSVGModule} from "ng-inline-svg-2";
 import {MatTableModule} from "@angular/material/table";
@@ -35,6 +35,7 @@ const routes: Routes = [
         MatTableModule,
         MatSortModule,
         MatPaginatorModule,
+        ExtrasModule,
     ],
     exports: [RouterModule],
 })
