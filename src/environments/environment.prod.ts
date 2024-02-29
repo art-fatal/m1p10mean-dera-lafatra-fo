@@ -8,7 +8,7 @@ export const environment = {
   USERDATA_KEY: 'authf649fc9a5f55',
   isMockEnabled: true,
   apiUrl: 'https://m1p11mean-dera-lafatra-back.onrender.com',
-  appThemeName: 'Metronic',
+  appThemeName: 'My beauty',
   appPurchaseUrl: 'https://1.envato.market/EA4JP',
   appHTMLIntegration:
     'https://preview.keenthemes.com/metronic8/demo5/documentation/base/helpers/flex-layouts.html',
