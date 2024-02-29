@@ -7,6 +7,7 @@ import { ConfirmPasswordValidator } from './confirm-password.validator';
 import { first } from 'rxjs/operators';
 import {UserModel} from "../../../../models/user.model";
 import {CustomerModel} from "../../../../models/customer.model";
+import {ManagerModel} from "../../../../models/manager.model";
 
 @Component({
   selector: 'app-registration',
@@ -101,10 +102,17 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     Object.keys(this.f).forEach((key) => {
       result[key] = this.f[key].value;
     });
-    const newUser = CustomerModel.setModel(result);
+
+    const newCustomer = new ManagerModel(
+        "",
+        this.f.firstname.value,
+        this.f.lastname.value,
+        this.f.email.value,
+        this.f.password.value,
+    );
 
     const registrationSubscr = this.authService
-      .registration(newUser)
+      .registration(newCustomer)
       .pipe(first())
       .subscribe((user: UserModel) => {
         if (user) {
