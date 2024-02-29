@@ -7,9 +7,11 @@ import {environment} from 'src/environments/environment';
 import {Router} from '@angular/router';
 import {ResponseModel} from "../models/response.model";
 import {Roles} from "../../../enums/user/roles.enum";
-import {mapToClientModel} from "../../../services/mapping.service";
+import {mapToClientModel, mapToServerModel} from "../../../services/mapping.service";
 import StaffMapping from "../../../mappings/staff.mapping";
 import {UserModel} from "../../../models/user.model";
+import {StaffModel} from "../../../models/staff.model";
+import {ManagerModel} from "../../../models/manager.model";
 
 export type UserType = UserModel | undefined;
 
@@ -101,7 +103,8 @@ export class AuthService implements OnDestroy {
   // need create new user then login
   registration(user: UserModel): Observable<any> {
     this.isLoadingSubject.next(true);
-    return this.authHttpService.createUser(user).pipe(
+    const serverModel = this.mapToServerModel(user)
+    return this.authHttpService.createUser(serverModel).pipe(
       map(() => {
         this.isLoadingSubject.next(false);
       }),
@@ -143,6 +146,10 @@ export class AuthService implements OnDestroy {
       console.error(error);
       return undefined;
     }
+  }
+
+  protected mapToServerModel(clientModel: UserModel): any {
+    return mapToServerModel(clientModel, StaffMapping)
   }
 
   ngOnDestroy() {

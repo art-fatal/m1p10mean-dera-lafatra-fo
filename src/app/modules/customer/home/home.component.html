@@ -17,20 +17,6 @@
                         <ng-container *ngIf="service.promoPrice">
                             <span class="badge badge-light-danger fw-bold me-auto px-4 py-3">Promo</span>
                         </ng-container>
-                        <button
-                                type="button"
-                                class="btn btn-sm btn-icon btn-color-warning btn-active-light-warning"
-                                (click)="toggleFavorite($event, service)"
-                                data-kt-menu-trigger="click"
-                                data-kt-menu-placement="bottom-end"
-                                data-kt-menu-flip="top-end"
-                        >
-                            <app-keenicon
-                                    name="star"
-                                    class="fs-1"
-                                    [ngClass]="{'text-secondary': !service.favorite, 'text-warning': service.favorite}"
-                            ></app-keenicon>
-                        </button>
                     </div>
                     <!--end::Card toolbar-->
                 </div>
@@ -68,9 +54,41 @@
                     <!--begin::Progress-->
                     <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip" title="This project 50% completed">
                         <div class="bg-primary rounded h-4px" role="progressbar" style="width: 50%" aria-valuenow="50"
-                             aria-valuemin="0" aria-valuemax="100"></div>
+                             aria-valuemin="0" aria-valuemax="100">
+                        </div>
                     </div>
                     <!--end::Progress-->
+                    <div class="text-right">
+                        <button
+                                ngbTooltip="Favorite"
+                                type="button"
+                                class="btn btn-sm btn-icon btn-circle btn-color-warning btn-dashed btn-outline btn-active-light-warning me-4"
+                                (click)="toggleFavorite($event, service)"
+                                data-kt-menu-trigger="click"
+                                data-kt-menu-placement="bottom-end"
+                                data-kt-menu-flip="top-end"
+                        >
+                            <app-keenicon
+                                    name="star"
+                                    class="fs-2"
+                                    [ngClass]="{'text-secondary': !service.favorite, 'text-warning': service.favorite}"
+                            ></app-keenicon>
+                        </button>
+                        <button
+                                type="button"
+                                ngbTooltip="Book"
+                                class="btn btn-sm btn-icon btn-circle btn-color-primary btn-outline btn-active-light-primary"
+                                (click)="toggleFavorite($event, service)"
+                                data-kt-menu-trigger="click"
+                                data-kt-menu-placement="bottom-end"
+                                data-kt-menu-flip="top-end"
+                        >
+                            <app-keenicon
+                                    name="purchase"
+                                    class="fs-2 text-primary"
+                            ></app-keenicon>
+                        </button>
+                    </div>
                 </div>
                 <!--end:: Card body-->
             </div>

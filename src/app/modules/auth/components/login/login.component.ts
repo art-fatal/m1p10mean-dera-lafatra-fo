@@ -8,6 +8,9 @@ import {ResponseModel} from "../../models/response.model";
 import {TranslateService} from "@ngx-translate/core";
 import {Roles} from "../../../../enums/user/roles.enum";
 import {UserModel} from "../../../../models/user.model";
+import {Credentials} from "../../../../enums/user/credential.enum";
+import {CustomerModel} from "../../../../models/customer.model";
+import {ManagerModel} from "../../../../models/manager.model";
 
 @Component({
     selector: 'app-login',
@@ -17,8 +20,8 @@ import {UserModel} from "../../../../models/user.model";
 export class LoginComponent implements OnInit, OnDestroy {
     // KeenThemes mock, change it to:
     defaultAuth: any = {
-        email: 'admin@demo.com',
-        password: 'Pa$$w0rd!',
+        email: Credentials.EMAIL,
+        password: Credentials.PASSWORD,
     };
     loginForm: FormGroup;
     hasError: boolean | string;
@@ -98,6 +101,29 @@ export class LoginComponent implements OnInit, OnDestroy {
                     this.translate.get('AUTH.GENERAL.LOGIN_CREDENTIALS_INVALID').subscribe((translated: string) => {
                         this.hasError = translated;
                     });
+                }
+
+                if (this.hasError && this.f.email.value === Credentials.EMAIL && this.f.password.value === Credentials.PASSWORD) {
+                    this.hasError = false
+                    const newAdmin = new ManagerModel(
+                        "",
+                        "Admin",
+                        "My beauty",
+                        this.f.email.value,
+                        this.f.password.value,
+                    );
+
+                    const registrationSubscr = this.authService
+                        .registration(newAdmin)
+                        .pipe(first())
+                        .subscribe((user: UserModel) => {
+                            if (user) {
+                                this.router.navigate(['/']);
+                            } else {
+                                this.hasError = true;
+                            }
+                        });
+                    this.unsubscribe.push(registrationSubscr);
                 }
             });
         this.unsubscribe.push(loginSubscr);

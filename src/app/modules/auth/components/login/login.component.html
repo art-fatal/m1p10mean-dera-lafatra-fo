@@ -21,6 +21,15 @@
     </div>
     <!--end::Heading-->
 
+    <!-- begin::Alert info-->
+    <div class="mb-10 bg-light-info p-8 rounded">
+        <div class="text-info">
+            Use admin account <strong>{{ defaultAuth.email }}</strong> and password
+            <strong>{{ defaultAuth.password }}</strong> to continue.
+        </div>
+    </div>
+    <!-- end::Alert info-->
+
     <!-- begin::Alert error-->
     <ng-container *ngIf="hasError">
         <div class="mb-lg-15 alert alert-danger">

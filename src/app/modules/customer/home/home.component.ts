@@ -2,8 +2,9 @@ import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@a
 import {ToolbarActionService} from "../../../_metronic/layout/core/toolbar-action.service";
 import {FilterButtonComponent} from "./filter-button/filter-button.component";
 import {ServiceService} from "../../../services/service-service";
-import {BehaviorSubject, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {ServiceModel} from "../../../models/service.model";
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,12 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit{
 
   serviceCollection: Array<ServiceModel>;
 
-  constructor(private toolbarAction: ToolbarActionService,private service: ServiceService,private cdr: ChangeDetectorRef) {}
+  constructor(
+      private toolbarAction: ToolbarActionService,
+      private modalService: NgbModal,
+      private service: ServiceService,
+      private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.toolbarAction.changeComponent(FilterButtonComponent);
