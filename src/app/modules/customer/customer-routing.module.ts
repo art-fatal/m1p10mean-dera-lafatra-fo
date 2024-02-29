@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {CustomerComponent} from "./customer.component";
 import {AppointmentHistoryComponent} from "./appointment-history/appointment-history.component";
 import {HomeComponent} from "./home/home.component";
+import {PreferenceComponent} from "./preference/preference.component";
 
 const routes: Routes = [
     {
@@ -16,6 +17,10 @@ const routes: Routes = [
             {
                 path: 'appointments',
                 component: AppointmentHistoryComponent,
+            },
+            {
+                path: 'preferences',
+                component: PreferenceComponent,
             },
             {path: "", redirectTo: "home", pathMatch: "full"},
             {path: "**", redirectTo: "home", pathMatch: "full"},

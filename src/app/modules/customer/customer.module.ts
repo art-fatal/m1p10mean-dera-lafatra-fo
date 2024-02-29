@@ -6,13 +6,14 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { InlineSVGModule } from 'ng-inline-svg-2';
 import { AppointmentHistoryComponent } from './appointment-history/appointment-history.component';
 import {CustomerRoutingModule} from "./customer-routing.module";
-import {DropdownMenusModule, WidgetsModule} from "../../_metronic/partials";
+import {DropdownMenusModule, ExtrasModule, WidgetsModule} from "../../_metronic/partials";
 import { HomeComponent } from './home/home.component';
 import { FilterButtonComponent } from './home/filter-button/filter-button.component';
 import {SharedModule} from "../../_metronic/shared/shared.module";
+import { PreferenceComponent } from './preference/preference.component';
 
 @NgModule({
-  declarations: [CustomerComponent, AppointmentHistoryComponent, HomeComponent, FilterButtonComponent],
+  declarations: [CustomerComponent, AppointmentHistoryComponent, HomeComponent, FilterButtonComponent, PreferenceComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -22,6 +23,7 @@ import {SharedModule} from "../../_metronic/shared/shared.module";
         WidgetsModule,
         DropdownMenusModule,
         SharedModule,
+        ExtrasModule,
     ],
 })
 export class CustomerModule {}
