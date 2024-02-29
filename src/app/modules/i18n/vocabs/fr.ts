@@ -34,7 +34,7 @@ export const locale = {
         LEGAL: 'Legal',
         CONTACT: 'Contact',
         NEW_HERE: 'Nouveau',
-        SIGNIN_TO: 'Se connecter à',
+        SIGNIN_TO: 'Se connecter',
         LOGIN_CREDENTIALS_INVALID: 'Les informations de connexion sont incorrectes',
         REGISTRATION_CREDENTIALS_INVALID: 'Les informations d\'inscription sont incorrects',
         FORGOT_PASSWORD: 'Mot de passe oublié',
