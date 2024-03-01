@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {getCSSVariableValue} from "../../../_metronic/kt/_utils";
+import {CreateButtonComponent} from "../service/component/list/create-button/create-button.component";
+import {ToolbarActionService} from "../../../_metronic/layout/core/toolbar-action.service";
+import {ServiceService} from "../../../services/service-service";
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +10,9 @@ import {getCSSVariableValue} from "../../../_metronic/kt/_utils";
 })
 export class DashboardComponent implements OnInit{
   chartOptions: any = {};
-  constructor() {}
+  constructor(private toolbarAction: ToolbarActionService) {
+    this.toolbarAction.changeComponent(null);
+  }
 
   ngOnInit(): void {
     this.chartOptions = getChartOptions(350);
