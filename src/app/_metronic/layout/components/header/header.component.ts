@@ -53,8 +53,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const headerMenu = this.layout.getProp("header.menu") as
         | boolean
         | undefined;
-    if (headerMenu) {
-      this.showHeaderMenu = true;
-    }
+      this.showHeaderMenu = headerMenu === undefined ? false : headerMenu;
   }
 }

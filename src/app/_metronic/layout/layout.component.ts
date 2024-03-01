@@ -18,31 +18,15 @@ import { PageInfoService } from "./core/page-info.service";
 })
 export class LayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   // Public variables
-  selfLayout = "default";
-  asideSelfDisplay: true;
-  asideMenuStatic: true;
-  contentClasses = "";
   contentContainerClasses = "";
   toolbarDisplay = true;
-  contentExtended: false;
   asideCSSClasses: string;
-  asideHTMLAttributes: any = {};
-  headerMobileClasses = "";
-  headerMobileAttributes = {};
-  footerDisplay: boolean;
   headerFixedDesktop?: boolean = false;
   footerCSSClasses: string;
   headerCSSClasses: string;
   headerHTMLAttributes: any = {};
   showSidebar$: Observable<boolean>;
   // offcanvases
-  extrasSearchOffcanvasDisplay = false;
-  extrasNotificationsOffcanvasDisplay = false;
-  extrasQuickActionsOffcanvasDisplay = false;
-  extrasCartOffcanvasDisplay = false;
-  extrasUserOffcanvasDisplay = false;
-  extrasQuickPanelDisplay = false;
-  extrasScrollTopDisplay = false;
   asideDisplay: boolean;
   title$: Observable<string>;
   private unsubscribe: Subscription[] = [];
