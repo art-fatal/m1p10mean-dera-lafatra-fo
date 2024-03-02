@@ -22,6 +22,11 @@ const routes: Routes = [
                 loadChildren: () =>
                     import('./service/service.module').then((m) => m.ServiceModule),
             },
+            {
+                path: 'expense',
+                loadChildren: () =>
+                    import('./expense/expense.module').then((m) => m.ExpenseModule),
+            },
             {path: "", redirectTo: "dashboard", pathMatch: "full"},
             {path: "**", redirectTo: "dashboard", pathMatch: "full"},
         ],
