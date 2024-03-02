@@ -1,3 +1,93 @@
+<!-- begin::Row -->
+<div class="row gy-5 g-xl-8 justify-content-around">
+    <div class="col-xxl-4">
+        <div class="card card-xl-stretch mb-xl-8">
+            <div class="card-header border-0 py-5" [ngClass]="'bg-danger'">
+                <h3 class="card-title fw-bolder text-white">Users</h3>
+            </div>
+            <!-- end::Header -->
+            <!-- begin::Body -->
+            <div class="card-body p-0">
+                <!-- begin::Chart -->
+                <div
+                    #chartRef
+                    class="mixed-widget-2-chart card-rounded-bottom"
+                    [ngClass]="'bg-danger'"
+                >
+                    <br>
+                    <br>
+                </div>
+                <!-- end::Chart -->
+                <!-- begin::Stats -->
+                <div class="card-p mt-n20 position-relative">
+                    <!-- begin::Row -->
+                    <div class="row g-0">
+                        <!-- begin::Col -->
+                        <div class="col bg-light-success px-6 py-8 rounded-2 me-7 mb-7">
+                            <app-keenicon name="people" class="fs-3 my-2 d-block text-success"></app-keenicon>
+
+                            <a href="#" class="text-success fw-bold fs-6"> Customers </a>
+                        </div>
+                        <!-- end::Col -->
+                        <!-- begin::Col -->
+                        <div class="col bg-light-primary px-6 py-8 rounded-2 mb-7">
+                            <app-keenicon name="user-tick" class="fs-3 text-primary my-2 d-block"></app-keenicon>
+                            <a href="#" class="text-primary fw-bold fs-6"> Staff </a>
+                        </div>
+                        <!-- end::Col -->
+                    </div>
+                    <!-- end::Row -->
+                </div>
+                <!-- end::Stats -->
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xxl-4">
+        <div class="card card-xl-stretch mb-xl-8">
+            <div class="card-header border-0 py-5" [ngClass]="'bg-primary'">
+                <h3 class="card-title fw-bolder text-white">Services</h3>
+            </div>
+            <!-- end::Header -->
+            <!-- begin::Body -->
+            <div class="card-body p-0">
+                <!-- begin::Chart -->
+                <div
+                    #chartRef
+                    class="mixed-widget-2-chart card-rounded-bottom"
+                    [ngClass]="'bg-primary'"
+                >
+                    <br>
+                    <br>
+                </div>
+                <!-- end::Chart -->
+                <!-- begin::Stats -->
+                <div class="card-p mt-n20 position-relative">
+                    <!-- begin::Row -->
+                    <div class="row g-0">
+                        <!-- begin::Col -->
+                        <div class="col bg-light-warning px-6 py-8 rounded-2 me-7 mb-7">
+                            <app-keenicon name="parcel" class="fs-3 text-warning my-2 d-block"></app-keenicon>
+                            <a href="#" class="text-warning fw-bold fs-6"> Services </a>
+                        </div>
+                        <!-- end::Col -->
+                        <!-- begin::Col -->
+                        <div class="col bg-light-danger px-6 py-8 rounded-2 mb-7">
+                            <app-keenicon name="euro" class="fs-3 text-danger my-2 d-block"></app-keenicon>
+                            <a href="#" class="text-danger fw-bold fs-6"> Earning </a>
+                        </div>
+                        <!-- end::Col -->
+                    </div>
+                    <!-- end::Row -->
+                </div>
+                <!-- end::Stats -->
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end::Row -->
+
 <!-- begin::Row-->
 <div class="row g-5 g-xl-8">
     <div class="col-xl-6">
@@ -7,7 +97,7 @@
                 <h3 class="card-title align-items-start flex-column">
                     <span class="card-label fw-bolder fs-3 mb-1">Turnover</span>
 
-                    <span class="text-muted fw-bold fs-7">To see more informations use the filter in the right top button of this card</span>
+                    <span class="text-muted fw-bold fs-7">Turnover per day or per month</span>
                 </h3>
                 <!-- end::Title-->
 
@@ -42,7 +132,7 @@
             <!-- begin::Body-->
             <div class="card-body">
                 <!-- begin::Chart-->
-                <div #chartRef id="kt_charts_widget_1_chart" [style.height]="'350px'">
+                <div #chartRef id="kt_turnover_chart" [style.height]="'350px'">
                     <apx-chart
                             [series]="chartOptions.series"
                             [chart]="chartOptions.chart"
@@ -65,6 +155,68 @@
         </div>
     </div>
     <div class="col-xl-6">
+        <div class="card card-xl-stretch mb-xl-8">
+            <div class="card-header border-0 pt-5">
+                <!-- begin::Title-->
+                <h3 class="card-title align-items-start flex-column">
+                    <span class="card-label fw-bolder fs-3 mb-1">Booking</span>
+
+                    <span class="text-muted fw-bold fs-7">Number of reservations per day or per month</span>
+                </h3>
+                <!-- end::Title-->
+
+                <!-- begin::Toolbar-->
+                <div class="card-toolbar">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class=" nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1 "
+                               data-bs-toggle="tab"
+                               [ngClass]="activeClass('monthly')"
+                               (click)="setTab('monthly')"
+                            >
+                                Monthly
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=" nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1 "
+                               [ngClass]="activeClass('daily')"
+                               (click)="setTab('daily')"
+                               data-bs-toggle="tab"
+                            >
+                                Daily
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- end::Menu-->
+                </div>
+                <!-- end::Toolbar-->
+            </div>
+            <!-- end::Header-->
+
+            <!-- begin::Body-->
+            <div class="card-body">
+                <!-- begin::Chart-->
+                <div #chartRef id="kt_booking_chart" [style.height]="'350px'">
+                    <apx-chart
+                            [series]="chartOptions.series"
+                            [chart]="chartOptions.chart"
+                            [xaxis]="chartOptions.xaxis"
+                            [yaxis]="chartOptions.yaxis"
+                            [dataLabels]="chartOptions.dataLabels"
+                            [stroke]="chartOptions.stroke"
+                            [legend]="chartOptions.legend"
+                            [fill]="chartOptions.fill"
+                            [states]="chartOptions.states"
+                            [tooltip]="chartOptions.tooltip"
+                            [colors]="chartOptions.colors"
+                            [markers]="chartOptions.markers"
+                            [plotOptions]="chartOptions.plotOptions"
+                    ></apx-chart>
+                </div>
+                <!-- end::Chart-->
+            </div>
+
+        </div>
     </div>
 </div>
 <!-- end::Row-->

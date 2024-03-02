@@ -20,3 +20,9 @@
 .text-right{
   text-align: right;
 }
+
+app-keenicon.fs-3{
+  > i {
+    font-size: 3rem !important;
+  }
+}

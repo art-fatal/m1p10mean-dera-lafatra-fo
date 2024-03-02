@@ -8,6 +8,7 @@ import {ManagerRoutingModule} from "./manager-routing.module";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {DropdownMenusModule, WidgetsModule} from "../../_metronic/partials";
 import {NgApexchartsModule} from "ng-apexcharts";
+import {SharedModule} from "../../_metronic/shared/shared.module";
 
 @NgModule({
   declarations: [ManagerComponent, DashboardComponent],
@@ -19,7 +20,8 @@ import {NgApexchartsModule} from "ng-apexcharts";
         ManagerRoutingModule,
         WidgetsModule,
         DropdownMenusModule,
-        NgApexchartsModule
+        NgApexchartsModule,
+        SharedModule
     ],
 })
 export class ManagerModule {}
