@@ -23,16 +23,16 @@
                     <!-- begin::Row -->
                     <div class="row g-0">
                         <!-- begin::Col -->
-                        <div class="col bg-light-success px-6 py-8 rounded-2 me-7 mb-7">
-                            <app-keenicon name="people" class="fs-3 my-2 d-block text-success"></app-keenicon>
-
-                            <a href="#" class="text-success fw-bold fs-6"> Customers </a>
+                        <div class="col bg-light-primary px-6 py-8 rounded-2 me-7 mb-7">
+                            <app-keenicon name="user-tick" class="fs-3 text-primary my-2 d-block"></app-keenicon>
+                            <a href="#" class="text-primary fw-bold fs-6"> Staff </a>
                         </div>
                         <!-- end::Col -->
                         <!-- begin::Col -->
-                        <div class="col bg-light-primary px-6 py-8 rounded-2 mb-7">
-                            <app-keenicon name="user-tick" class="fs-3 text-primary my-2 d-block"></app-keenicon>
-                            <a href="#" class="text-primary fw-bold fs-6"> Staff </a>
+                        <div class="col bg-light-success px-6 py-8 rounded-2 mb-7">
+                            <app-keenicon name="people" class="fs-3 my-2 d-block text-success"></app-keenicon>
+
+                            <a href="#" class="text-success fw-bold fs-6"> Customers </a>
                         </div>
                         <!-- end::Col -->
                     </div>
@@ -46,7 +46,7 @@
     <div class="col-xxl-4">
         <div class="card card-xl-stretch mb-xl-8">
             <div class="card-header border-0 py-5" [ngClass]="'bg-primary'">
-                <h3 class="card-title fw-bolder text-white">Services</h3>
+                <h3 class="card-title fw-bolder text-white">Offer</h3>
             </div>
             <!-- end::Header -->
             <!-- begin::Body -->
@@ -66,15 +66,57 @@
                     <!-- begin::Row -->
                     <div class="row g-0">
                         <!-- begin::Col -->
-                        <div class="col bg-light-warning px-6 py-8 rounded-2 me-7 mb-7">
-                            <app-keenicon name="parcel" class="fs-3 text-warning my-2 d-block"></app-keenicon>
-                            <a href="#" class="text-warning fw-bold fs-6"> Services </a>
+                        <div class="col bg-light-danger px-6 py-8 rounded-2 me-7 mb-7">
+                            <app-keenicon name="euro" class="fs-3 text-danger my-2 d-block"></app-keenicon>
+                            <a href="#" class="text-danger fw-bold fs-6"> Special </a>
+                        </div>
+                        <!-- end::Col -->
+                        <!-- begin::Col -->
+                        <div class="col bg-light-info px-6 py-8 rounded-2 mb-7">
+                            <app-keenicon name="parcel" class="fs-3 text-info my-2 d-block"></app-keenicon>
+                            <a href="#" class="text-info fw-bold fs-6"> Services </a>
+                        </div>
+                        <!-- end::Col -->
+                    </div>
+                    <!-- end::Row -->
+                </div>
+                <!-- end::Stats -->
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xxl-4">
+        <div class="card card-xl-stretch mb-xl-8">
+            <div class="card-header border-0 py-5" [ngClass]="'bg-info'">
+                <h3 class="card-title fw-bolder text-white">Finance</h3>
+            </div>
+            <!-- end::Header -->
+            <!-- begin::Body -->
+            <div class="card-body p-0">
+                <!-- begin::Chart -->
+                <div
+                    #chartRef
+                    class="mixed-widget-2-chart card-rounded-bottom"
+                    [ngClass]="'bg-info'"
+                >
+                    <br>
+                    <br>
+                </div>
+                <!-- end::Chart -->
+                <!-- begin::Stats -->
+                <div class="card-p mt-n20 position-relative">
+                    <!-- begin::Row -->
+                    <div class="row g-0">
+                        <!-- begin::Col -->
+                        <div class="col bg-light-success px-6 py-8 rounded-2 me-7 mb-7">
+                            <app-keenicon name="parcel" class="fs-3 text-success my-2 d-block"></app-keenicon>
+                            <a href="#" class="text-success fw-bold fs-6"> Earnings </a>
                         </div>
                         <!-- end::Col -->
                         <!-- begin::Col -->
                         <div class="col bg-light-danger px-6 py-8 rounded-2 mb-7">
                             <app-keenicon name="euro" class="fs-3 text-danger my-2 d-block"></app-keenicon>
-                            <a href="#" class="text-danger fw-bold fs-6"> Earning </a>
+                            <a href="#" class="text-danger fw-bold fs-6"> Spent </a>
                         </div>
                         <!-- end::Col -->
                     </div>
