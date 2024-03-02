@@ -4,18 +4,32 @@ import {CreateButtonComponent} from "../service/component/list/create-button/cre
 import {ToolbarActionService} from "../../../_metronic/layout/core/toolbar-action.service";
 import {ServiceService} from "../../../services/service-service";
 
+type Tabs =
+    | 'monthly'
+    | 'daily';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent implements OnInit{
   chartOptions: any = {};
+  activeTab: Tabs = 'monthly';
+
   constructor(private toolbarAction: ToolbarActionService) {
     this.toolbarAction.changeComponent(null);
   }
 
   ngOnInit(): void {
     this.chartOptions = getChartOptions(350);
+  }
+
+  setTab(tab: Tabs) {
+    this.activeTab = tab;
+  }
+
+  activeClass(tab: Tabs) {
+    return tab === this.activeTab ? 'show active' : '';
   }
 }
 

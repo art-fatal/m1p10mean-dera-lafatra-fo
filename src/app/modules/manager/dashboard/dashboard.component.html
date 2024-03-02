@@ -13,18 +13,26 @@
 
                 <!-- begin::Toolbar-->
                 <div class="card-toolbar">
-                    <!-- begin::Menu-->
-                    <button
-                            type="button"
-                            class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
-                            data-kt-menu-trigger="click"
-                            data-kt-menu-placement="bottom-end"
-                            data-kt-menu-flip="top-end"
-                    >
-                        <span [inlineSVG]="'./assets//media/icons/duotune/general/gen024.svg'" class="svg-icon svg-icon-2"></span>
-                    </button>
-                    <app-dropdown-menu1></app-dropdown-menu1>
-
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class=" nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1 "
+                               data-bs-toggle="tab"
+                               [ngClass]="activeClass('monthly')"
+                               (click)="setTab('monthly')"
+                            >
+                                Monthly
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class=" nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1 "
+                               [ngClass]="activeClass('daily')"
+                               (click)="setTab('daily')"
+                               data-bs-toggle="tab"
+                            >
+                                Daily
+                            </a>
+                        </li>
+                    </ul>
                     <!-- end::Menu-->
                 </div>
                 <!-- end::Toolbar-->
